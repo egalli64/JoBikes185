@@ -1,44 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="utf-8">
 <title>Welcome to JoBikes</title>
-<script type="text/javascript">
-	function checkUser() {
-		var user = document.getElementById("userId");
-		if(user.value.length == 0) {
-			alert("User name is mandatory!");
-			user.focus();
-			return false;
-		}
-		return true;
-	}
-</script>
+<script src="myScripts.js"></script>
+<link rel="stylesheet" type="text/css" href="myStyles.css">
 </head>
 <body>
-	<form name="frmLog" action="login" method="post" onsubmit="return checkUser()">
-		<div>
-			<label for="user">User</label>
-			<input name="user" id="userId">
-			<label for="password">Password</label>
-			<input name="password" type="password">
-		</div>
-		<div>
-			<button>Check in</button>
-		</div>
-	</form>
+	<h1>Welcome to JoBikes!</h1>
+	<fieldset>
+		<legend>Hello</legend>
+		<form name="frmLog" action="login" method="post"
+			onsubmit="return checkUser()">
+			<div>
+				<label for="user">User</label> <input name="user" id="userId">
+				<label for="password">Password</label> <input name="password"
+					type="password">
+			</div>
+			<div>
+				<button>Check in</button>
+			</div>
+		</form>
+	</fieldset>
 
-	<form action="login" method="get">
-		<div>
-			<label for="user">User</label>
-			<input name="user">
-			<label for="password">Password</label>
-			<input name="password" type="password">
-		</div>
-		<div>
-			<button>Unwise</button>
-		</div>
-	</form>
+	<fieldset>
+		<legend>GET is not a good idea here</legend>
+		<form action="login" method="get">
+			<div>
+				<label for="user">User</label> <input name="user"> <label
+					for="password">Password</label> <input name="password"
+					type="password">
+			</div>
+			<div>
+				<button>Check in</button>
+			</div>
+		</form>
+	</fieldset>
+
 
 </body>
 </html>
