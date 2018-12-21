@@ -24,3 +24,4 @@ mvnw*
 /dist/
 /nbdist/
 /.nb-gradle/
+/bin/
