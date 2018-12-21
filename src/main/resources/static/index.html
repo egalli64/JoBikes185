@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Welcome to JoBikes</title>
+<script type="text/javascript">
+	function checkUser() {
+		var user = document.getElementById("userId");
+		if(user.value.length == 0) {
+			alert("User name is mandatory!");
+			user.focus();
+			return false;
+		}
+		return true;
+	}
+</script>
+</head>
+<body>
+	<form name="frmLog" action="login" method="post" onsubmit="return checkUser()">
+		<div>
+			<label for="user">User</label>
+			<input name="user" id="userId">
+			<label for="password">Password</label>
+			<input name="password" type="password">
+		</div>
+		<div>
+			<button>Check in</button>
+		</div>
+	</form>
+
+	<form action="login" method="get">
+		<div>
+			<label for="user">User</label>
+			<input name="user">
+			<label for="password">Password</label>
+			<input name="password" type="password">
+		</div>
+		<div>
+			<button>Unwise</button>
+		</div>
+	</form>
+
+</body>
+</html>
