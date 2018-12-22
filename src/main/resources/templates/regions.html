@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Region Manager</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/myStyles.css}">
+</head>
+<body>
+	<h1>Regions</h1>
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>NAME</th>
+		</tr>
+		<tr data-th-each="region: ${regions}">
+			<td data-th-text="${region.id}">...</td>
+			<td data-th-text="${region.name}">...</td>
+		</tr>
+	</table>
+</body>
+</html>

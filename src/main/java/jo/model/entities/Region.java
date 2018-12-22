@@ -6,25 +6,21 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "COUNTRIES")
-public class Country {
+@Table(name = "REGIONS")
+public class Region {
 	@Id
-	@Column(name = "COUNTRY_ID")
+	@Column(name = "REGION_ID")
 	private String id;
 
-	@Column(name = "COUNTRY_NAME")
+	@Column(name = "REGION_NAME")
 	private String name;
 
-	@Column(name = "REGION_ID")
-	private Integer regId;
-
-	public Country() {
+	public Region() {
 	}
 
-	public Country(String id, String name, Integer regId) {
+	public Region(String id, String name) {
 		this.id = id;
 		this.name = name;
-		this.regId = regId;
 	}
 
 	public String getId() {
@@ -35,10 +31,6 @@ public class Country {
 		return name;
 	}
 
-	public Integer getRegId() {
-		return regId;
-	}
-
 	public void setId(String id) {
 		this.id = id;
 	}
@@ -47,12 +39,8 @@ public class Country {
 		this.name = name;
 	}
 
-	public void setRegId(Integer regId) {
-		this.regId = regId;
-	}
-
 	@Override
 	public String toString() {
-		return String.format("id=%s, name=%s, region=%d", id, name, regId);
+		return String.format("id=%s, name=%s", id, name);
 	}
 }

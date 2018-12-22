@@ -1,8 +1,5 @@
 package jo;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import jo.model.CountryRepository;
-import jo.model.entities.Country;
+import jo.model.RegionRepository;
 
 @Controller
 public class JBController {
@@ -21,7 +18,9 @@ public class JBController {
 
 	@Autowired
 	CountryRepository countryRep;
-	
+	@Autowired
+	RegionRepository regionRep;
+
 	// this is not a good idea!
 	@GetMapping("/login")
 	public String nakedLogin( //
@@ -48,12 +47,18 @@ public class JBController {
 			return "checkPassword";
 		}
 	}
-	
+
 	@GetMapping("/countries")
 	public String showCountries(Model model) {
-		logger.debug("Access to countries resources");
+		logger.debug("Show countries");
 		model.addAttribute("countries", countryRep.findAll());
 		return "countries";
 	}
 
+	@GetMapping("/regions")
+	public String showRegions(Model model) {
+		logger.debug("Show regions");
+		model.addAttribute("regions", regionRep.findAll());
+		return "regions";
+	}
 }
