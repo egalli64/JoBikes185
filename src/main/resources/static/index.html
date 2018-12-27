@@ -15,9 +15,10 @@
 		<form name="frmLog" action="login" method="post"
 			onsubmit="return checkUser()">
 			<div>
-				<label for="user">User</label> <input name="user" id="userId">
-				<label for="password">Password</label> <input name="password"
-					type="password">
+				<label for="userId">User:</label>
+				<input name="user" id="userId">
+				<label for="pwdId">Password:</label>
+				<input name="password" id="pwdId" type="password">
 			</div>
 			<div>
 				<button>Check in</button>
@@ -29,9 +30,8 @@
 		<legend>GET is not a good idea here</legend>
 		<form action="login" method="get">
 			<div>
-				<label for="user">User</label> <input name="user"> <label
-					for="password">Password</label> <input name="password"
-					type="password">
+				<label>User: <input name="user" /></label>
+				<label>Password: <input name="password" type="password"></label>
 			</div>
 			<div>
 				<button>Check in</button>
