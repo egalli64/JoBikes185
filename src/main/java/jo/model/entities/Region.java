@@ -10,7 +10,7 @@ import javax.persistence.Table;
 public class Region {
 	@Id
 	@Column(name = "REGION_ID")
-	private String id;
+	private int id;
 
 	@Column(name = "REGION_NAME")
 	private String name;
@@ -18,12 +18,12 @@ public class Region {
 	public Region() {
 	}
 
-	public Region(String id, String name) {
+	public Region(int id, String name) {
 		this.id = id;
 		this.name = name;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
@@ -31,7 +31,7 @@ public class Region {
 		return name;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -41,6 +41,6 @@ public class Region {
 
 	@Override
 	public String toString() {
-		return String.format("id=%s, name=%s", id, name);
+		return String.format("id=%d, name=%s", id, name);
 	}
 }
