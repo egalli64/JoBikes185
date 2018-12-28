@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ThymeLeaf basic stuff</title>
+</head>
+<body>
+	<h1>Fake Regions</h1>
+
+	The registered user name is
+	<span th:text="${user}">Missing</span>
+	<br />
+	<label for="unId">User name: </label>
+	<input type="text" id="unId" name="un" value="..." th:value="${user}" />
+	<br />
+
+	<p>
+		These <span th:text="${data}">no</span> regions are available here.
+	</p>
+
+	<p>Selecting and printing zeroth element in data:</p>
+	<div th:object="${data[0]}">
+		Id: <span th:text="*{id}">...</span>. <br /> Name: <span
+			th:text="*{name}">...</span>.
+	</div>
+
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>NAME</th>
+		</tr>
+		<tr th:each="region: ${data}">
+			<td th:text="${region.id}">...</td>
+			<td th:text="${region.name}">...</td>
+		</tr>
+	</table>
+
+	Select option:
+	<br />
+	<select name="selected">
+		<option th:value="${data[0].id}" th:text="${data[0].name}">First</option>
+		<option th:value="${data[1].id}" th:text="${data[1].name}">Second</option>
+	</select>
+</body>
+</html>

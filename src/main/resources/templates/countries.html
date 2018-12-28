@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <title>Countries Manager</title>
 <link rel="stylesheet" type="text/css" th:href="@{/css/myStyles.css}">
 </head>
 <body>
-	<h1>Regions</h1>
+	<h1>Countries</h1>
 	<table>
 		<tr>
 			<th>ID</th>
 			<th>NAME</th>
 			<th>REGION</th>
 		</tr>
-		<tr data-th-each="country: ${countries}">
-			<td data-th-text="${country.id}">...</td>
-			<td data-th-text="${country.name}">...</td>
-			<td data-th-text="${country.regId}">...</td>
+		<tr th:each="country: ${countries}">
+			<td th:text="${country.id}">...</td>
+			<td th:text="${country.name}">...</td>
+			<td th:text="${country.regId}">...</td>
 		</tr>
 	</table>
 </body>

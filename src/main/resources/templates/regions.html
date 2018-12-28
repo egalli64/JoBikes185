@@ -12,9 +12,9 @@
 			<th>ID</th>
 			<th>NAME</th>
 		</tr>
-		<tr data-th-each="region: ${regions}">
-			<td data-th-text="${region.id}">...</td>
-			<td data-th-text="${region.name}">...</td>
+		<tr th:each="region: ${regions}">
+			<td th:text="${region.id}">...</td>
+			<td th:text="${region.name}">...</td>
 		</tr>
 	</table>
 </body>
