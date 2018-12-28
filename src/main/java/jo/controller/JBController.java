@@ -1,4 +1,4 @@
-package jo;
+package jo.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,17 +9,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import jo.model.CountryRepository;
 import jo.model.RegionRepository;
+import jo.model.entities.Region;
 
 @Controller
 public class JBController {
 	static final Logger logger = LoggerFactory.getLogger(JBController.class);
-
-	@Autowired
-	CountryRepository countryRep;
-	@Autowired
-	RegionRepository regionRep;
 
 	// this is not a good idea!
 	@GetMapping("/login")
@@ -46,19 +41,5 @@ public class JBController {
 		} else {
 			return "checkPassword";
 		}
-	}
-
-	@GetMapping("/countries")
-	public String showCountries(Model model) {
-		logger.debug("Show countries");
-		model.addAttribute("countries", countryRep.findAll());
-		return "countries";
-	}
-
-	@GetMapping("/regions")
-	public String showRegions(Model model) {
-		logger.debug("Show regions");
-		model.addAttribute("regions", regionRep.findAll());
-		return "regions";
 	}
 }
