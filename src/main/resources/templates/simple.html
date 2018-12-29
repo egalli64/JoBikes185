@@ -24,6 +24,8 @@
 			th:text="*{name}">...</span>.
 	</div>
 
+	Table w/ th:each:
+	<br />
 	<table>
 		<tr>
 			<th>ID</th>
@@ -35,11 +37,12 @@
 		</tr>
 	</table>
 
-	Select option:
+	Select option w/ th:each:
 	<br />
 	<select name="selected">
-		<option th:value="${data[0].id}" th:text="${data[0].name}">First</option>
-		<option th:value="${data[1].id}" th:text="${data[1].name}">Second</option>
+		<option th:each="cur: ${data}" th:value="${cur.id}"
+			th:text="${cur.name}">...</option>
 	</select>
+	<br />
 </body>
 </html>
