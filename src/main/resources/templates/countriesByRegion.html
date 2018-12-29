@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Countries Manager</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/myStyles.css}">
+</head>
+<body>
+	<h1>Countries in <span th:text="${region}">region</span></h1>
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>NAME</th>
+		</tr>
+		<tr th:each="country: ${countries}">
+			<td th:text="${country.id}">...</td>
+			<td th:text="${country.name}">...</td>
+		</tr>
+	</table>
+</body>
+</html>

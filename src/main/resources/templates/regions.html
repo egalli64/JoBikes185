@@ -4,6 +4,12 @@
 <meta charset="utf-8">
 <title>Region Manager</title>
 <link rel="stylesheet" type="text/css" th:href="@{/css/myStyles.css}">
+<script type="text/javascript">
+function setRegionName() {
+	var val = document.getElementById('regionId').selectedOptions[0].text;
+	document.getElementById('regionName').value = val;
+}
+</script>
 </head>
 <body>
 	<h1>Regions</h1>
@@ -17,5 +23,17 @@
 			<td th:text="${region.name}">...</td>
 		</tr>
 	</table>
+
+	<h2>Countries by region:</h2>
+	<form action="countriesByRegion" onsubmit="return setRegionName()">
+		<select name="id" id="regionId">
+			<option th:each="cur: ${regions}" th:value="${cur.id}"
+				th:text="${cur.name}">...</option>
+		</select>
+		<input type="hidden" name="name" id="regionName" value="Unknown" />
+		<div>
+			<button>Select</button>
+		</div>
+	</form>
 </body>
 </html>
