@@ -25,8 +25,8 @@ function setRegionName() {
 	</table>
 
 	<h2>Countries by region:</h2>
-	<form action="countriesByRegion" onsubmit="return setRegionName()">
-		<select name="id" id="regionId">
+	<form action="/countries/region" onsubmit="return setRegionName()">
+	<select name="id" id="regionId">
 			<option th:each="cur: ${regions}" th:value="${cur.id}"
 				th:text="${cur.name}">...</option>
 		</select>
