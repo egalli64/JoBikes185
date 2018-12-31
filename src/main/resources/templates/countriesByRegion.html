@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" th:href="@{/css/myStyles.css}">
 </head>
 <body>
-	<h1>Countries in <span th:text="${region}">region</span></h1>
+	<h1>Countries in <span th:text="${region.name}">region</span></h1>
 	<table>
 		<tr>
 			<th>ID</th>
@@ -17,5 +17,27 @@
 			<td th:text="${country.name}">...</td>
 		</tr>
 	</table>
+
+	<h2>Save country in <span th:text="${region.name}">this region</span>:</h2>
+	<form action="/countries/save">
+		<label>Country id: <input name="cid" required="required"></label>
+		<br /> <label>Country name: <input name="name"
+			required="required"></label> <input type="hidden" name="rid"
+			th:value="${region.id}" />
+		<div>
+			<button>Save</button>
+		</div>
+	</form>
+
+	<h2>Delete country in <span th:text="${region.name}">this region</span>:</h2>
+	<form action="/countries/delete">
+		<select name="cid">
+			<option th:each="cur: ${countries}" th:value="${cur.id}"
+				th:text="${cur.name}">...</option>
+		</select> <input type="hidden" name="rid" id="regionId" th:value="${region.id}" />
+		<div>
+			<button>Delete</button>
+		</div>
+	</form>
 </body>
 </html>
