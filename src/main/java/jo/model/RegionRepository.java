@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import jo.model.entities.Region;
 
 @Repository
-public interface RegionRepository extends CrudRepository<Region, String> {
+public interface RegionRepository extends CrudRepository<Region, Integer> {
 	@Override
 	List<Region> findAll();
 }
