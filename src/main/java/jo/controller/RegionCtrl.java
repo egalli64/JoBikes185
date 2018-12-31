@@ -25,13 +25,35 @@ public class RegionCtrl {
 		return "regions";
 	}
 
-	@GetMapping("/region/save")
+	@GetMapping("/regions/select")
+	public String selectRegion( //
+			@RequestParam int id, //
+			Model model) {
+		logger.debug("Select region " + id);
+
+		model.addAttribute("region", repo.findById(id));
+		return "region";
+	}
+
+	@GetMapping("/regions/save")
 	public String saveRegion( //
 			@RequestParam(name = "id") int id, //
 			@RequestParam(name = "name") String name, //
 			Model model) {
-		logger.debug(String.format("Save region %d, %s", id, name));
-		repo.save(new Region(id, name));
+		Region region = new Region(id, name);
+		logger.debug("Save region " + region);
+		repo.save(region);
+
+		model.addAttribute("regions", repo.findAll());
+		return "regions";
+	}
+
+	@GetMapping("/regions/delete")
+	public String deleteRegion( //
+			@RequestParam int id, //
+			Model model) {
+		logger.debug("Delete region " + id);
+		repo.deleteById(id);
 
 		model.addAttribute("regions", repo.findAll());
 		return "regions";

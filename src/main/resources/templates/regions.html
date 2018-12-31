@@ -30,9 +30,30 @@ function setRegionName() {
 			<option th:each="cur: ${regions}" th:value="${cur.id}"
 				th:text="${cur.name}">...</option>
 		</select>
-		<input type="hidden" name="name" id="regionName" value="Unknown" />
+		<input type="hidden" name="name" id="regionName" />
 		<div>
 			<button>Select</button>
+		</div>
+	</form>
+
+	<h2>Save region:</h2>
+	<form action="/regions/save">
+		<label>Region id: <input name="id" required="required"></label>
+		<br />
+		<label>Region name: <input name="name" required="required"></label>
+		<div>
+			<button>Save</button>
+		</div>
+	</form>
+
+	<h2>Delete region:</h2>
+	<form action="/regions/delete">
+		<select name="id">
+			<option th:each="cur: ${regions}" th:value="${cur.id}"
+				th:text="${cur.name}">...</option>
+		</select>
+		<div>
+			<button>Delete</button>
 		</div>
 	</form>
 </body>

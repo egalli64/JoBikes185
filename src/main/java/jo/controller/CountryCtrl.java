@@ -1,5 +1,7 @@
 package jo.controller;
 
+import java.util.Optional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,17 @@ public class CountryCtrl {
 		logger.debug("All countries");
 		model.addAttribute("countries", repo.findAll());
 		return "countries";
+	}
+
+	@GetMapping("/countries/select")
+	public String selectCountry( //
+			@RequestParam String id, //
+			Model model) {
+		Optional<Country> country = repo.findById(id.toUpperCase());
+		logger.debug(String.format("Select country for %s gives %s", id, country));
+		
+		model.addAttribute("country", country.orElse(new Country(id, "Unknown", 0)));
+		return "country";
 	}
 
 	@GetMapping("/countries/region")
