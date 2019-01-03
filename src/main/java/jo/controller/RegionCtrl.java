@@ -13,14 +13,14 @@ import jo.model.entities.Region;
 
 @Controller
 public class RegionCtrl {
-	static final Logger logger = LoggerFactory.getLogger(RegionCtrl.class);
+	private static final Logger logger = LoggerFactory.getLogger(RegionCtrl.class);
 
 	@Autowired
 	RegionRepository repo;
 
 	@GetMapping("/regions")
 	public String showRegions(Model model) {
-		logger.debug("Show regions");
+		logger.debug("Get all regions");
 		model.addAttribute("regions", repo.findAll());
 		return "regions";
 	}

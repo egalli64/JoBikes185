@@ -14,7 +14,7 @@ import jo.model.entities.Region;
 
 @Controller
 public class JBController {
-	static final Logger logger = LoggerFactory.getLogger(JBController.class);
+	private static final Logger logger = LoggerFactory.getLogger(JBController.class);
 
 	// this is not a good idea!
 	@GetMapping("/login")

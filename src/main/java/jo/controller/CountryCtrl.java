@@ -16,7 +16,7 @@ import jo.model.entities.Region;
 
 @Controller
 public class CountryCtrl {
-	static final Logger logger = LoggerFactory.getLogger(CountryCtrl.class);
+	private static final Logger logger = LoggerFactory.getLogger(CountryCtrl.class);
 
 	@Autowired
 	CountryRepository repo;
@@ -33,8 +33,8 @@ public class CountryCtrl {
 			@RequestParam String id, //
 			Model model) {
 		Optional<Country> country = repo.findById(id.toUpperCase());
-		logger.debug(String.format("Select country for %s gives %s", id, country));
-		
+		logger.debug(String.format("Country with id %s is %s", id, country));
+
 		model.addAttribute("country", country.orElse(new Country(id, "Unknown", 0)));
 		return "country";
 	}
@@ -60,7 +60,7 @@ public class CountryCtrl {
 			Model model) {
 		Country country = new Country(cid.toUpperCase(), name, rid);
 		logger.debug("Save country " + country);
-		
+
 		repo.save(country);
 
 		model.addAttribute("countries", repo.findAll());
@@ -73,7 +73,7 @@ public class CountryCtrl {
 			@RequestParam int rid, //
 			Model model) {
 		logger.debug("Delete country " + cid);
-		
+
 		repo.deleteById(cid);
 
 		model.addAttribute("countries", repo.findAll());
