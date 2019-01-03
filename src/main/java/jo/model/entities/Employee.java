@@ -37,6 +37,11 @@ public class Employee {
 		this.jobId = "IT_PROG";
 	}
 
+	public Employee(Long id, String firstName, String lastName) {
+		this(firstName, lastName);
+		this.id = id;
+	}
+
 	public Long getId() {
 		return id;
 	}

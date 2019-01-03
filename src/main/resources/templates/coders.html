@@ -20,7 +20,6 @@
 		</tr>
 	</table>
 
-
 	<h2>Add new coder:</h2>
 	<form action="/coders/create">
 		<label>First name: <input name="first" required="required"></label>
@@ -28,6 +27,30 @@
 		<label>Last name: <input name="last" required="required"></label>
 		<div>
 			<button>Create</button>
+		</div>
+	</form>
+
+	<h2>Edit coder:</h2>
+	<form action="/coders/save">
+		<label>Id: <input name="id" required="required"></label>
+		<br />
+		<label>First name: <input name="first" required="required"></label>
+		<br />
+		<label>Last name: <input name="last" required="required"></label>
+		<div>
+			<button>Save</button>
+		</div>
+	</form>
+
+
+	<h2>Delete coder:</h2>
+	<form action="/coders/delete">
+		<select name="id">
+			<option th:each="cur: ${employees}" th:value="${cur.id}"
+				th:text="|${cur.firstName}  ${cur.lastName}|">...</option>
+		</select>
+		<div>
+			<button>Delete</button>
 		</div>
 	</form>
 
