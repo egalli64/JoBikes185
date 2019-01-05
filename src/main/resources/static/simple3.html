@@ -8,8 +8,8 @@
 <script>
 	// alert('hello world!');
 	// document.write('<p>Hello world!</p>');
-	var name = prompt("What is your name?", "Guest");
-	document.write("<h1>Welcome, " + name + "</h1>");
+	var name = prompt('What is your name?', 'Guest');
+	document.write('<h1>Welcome, ' + name + '</h1>');
 
 	function generateMessage(user, date) {
 		return 'Hello ' + user + '. You connected at ' + date;
@@ -77,6 +77,24 @@
 			$(this).val("Don't click me");
 		});
 	});
+	
+	function convertValue(elSel) {
+		var target = document.getElementById('numStrId');
+		switch(elSel.selectedOptions[0].value) {
+		case '1':
+			target.value = 'One';
+			break;
+		case '2':
+			target.value = 'Two';
+			break;
+		case '3':
+			target.value = 'Three';
+			break;
+		default:
+			target.value = '';
+			break;
+		}
+	}
 </script>
 <style type="text/css">
 .red {
@@ -97,5 +115,16 @@
 	<input type="button" id="downsize" value="Smaller" />?
 	<br />
 	<input type="button" id="useless" value="Click me" />
+	<hr />
+	<div>
+		<select onchange="convertValue(this)">
+			<option>-</option>
+			<option>1</option>
+			<option>2</option>
+			<option>3</option>
+		</select>
+		<br />
+		<label>As string: <input id="numStrId" readonly="readonly"></label>
+	</div>
 </body>
 </html>
