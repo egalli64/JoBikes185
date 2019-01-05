@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,12 +15,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import jo.model.entities.Region;
 
 @Controller
+@PropertySource("login.properties")
 public class JBController {
 	private static final Logger logger = LoggerFactory.getLogger(JBController.class);
 
+	@Value("${admin}")
+	private String admin;
+
+	@Value("${admin.password}")
+	private String adminPwd;
+
 	// this is not a good idea!
 	@GetMapping("/login")
-	public String nakedLogin( //
+	public String loginByGet( //
 			@RequestParam(name = "user", defaultValue = "Unknown") String user, //
 			@RequestParam(name = "password") String password, //
 			Model model) {
@@ -36,7 +45,7 @@ public class JBController {
 		logger.debug("Login attempt for user: " + user);
 
 		model.addAttribute("user", user);
-		if (user.equals("manager") && password.equals("")) {
+		if (user.equals(admin) && password.equals(adminPwd)) {
 			return "manager";
 		} else {
 			return "checkPassword";
@@ -46,7 +55,10 @@ public class JBController {
 	@GetMapping("/simple")
 	public String showCountries(Model model) {
 		logger.debug("Show thymeLeaf simple test page");
-		model.addAttribute("data", Arrays.asList(new Region(1, "North Europe"), new Region(2, "South Europe")));
+		model.addAttribute("data", Arrays.asList( //
+				new Region(1, "North Europe"), //
+				new Region(2, "South Europe")) //
+		);
 		model.addAttribute("user", "Tom Jones");
 		return "simple";
 	}
