@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" th:href="@{/css/myStyles.css}">
 </head>
 <body>
-	<h1>Countries</h1>
+	<h1>Countries<span th:text=" ${message}" th:if="${message}"></span></h1>
 	<table>
 		<tr>
 			<th>ID</th>

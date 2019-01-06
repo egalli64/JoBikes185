@@ -1,5 +1,6 @@
 package jo.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.slf4j.Logger;
@@ -37,6 +38,18 @@ public class CountryCtrl {
 
 		model.addAttribute("country", country.orElse(new Country(id, "Unknown", 0)));
 		return "country";
+	}
+
+	@GetMapping("/countries/startingBy")
+	public String startingBy( //
+			@RequestParam String name, //
+			Model model) {
+		List<Country> countries = repo.findByNameLike(name + "%");
+		logger.debug(countries.toString());
+
+		model.addAttribute("message", "with name starting by " + name);
+		model.addAttribute("countries", countries);
+		return "countries";
 	}
 
 	@GetMapping("/countries/region")

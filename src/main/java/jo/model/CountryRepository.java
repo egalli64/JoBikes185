@@ -14,4 +14,6 @@ public interface CountryRepository extends CrudRepository<Country, String> {
 
 	List<Country> findByName(String name);
 	List<Country> findByRegId(Integer regId);
+
+	List<Country> findByNameLike(String name);
 }
