@@ -42,8 +42,11 @@ public class EmployeeCtrl {
 		logger.debug("Create coder");
 		try {
 			repo.save(new Employee(first, last));
+			model.addAttribute("message", String.format("Coder %s %s correctly created", first, last));
 		} catch (DataIntegrityViolationException dive) {
-			logger.error(String.format("Can't create %s %s", first, last));
+			String message = String.format("Can't create coder %s %s", first, last);
+			logger.error(message);
+			model.addAttribute("message", message);
 		}
 		model.addAttribute("employees", repo.findByJobId(CODER));
 		return "coders";
@@ -58,8 +61,11 @@ public class EmployeeCtrl {
 		logger.debug("Save coder");
 		try {
 			repo.save(new Employee(id, first, last));
+			model.addAttribute("message", String.format("Coder %s %s correctly saved", first, last));
 		} catch (Exception ex) {
-			logger.error(String.format("Can't save %s %s", first, last));
+			String message = String.format("Can't save coder %s %s", first, last);
+			logger.error(message);
+			model.addAttribute("message", message);
 		}
 		model.addAttribute("employees", repo.findByJobId(CODER));
 		return "coders";
@@ -73,8 +79,11 @@ public class EmployeeCtrl {
 
 		try {
 			repo.deleteById(id);
+			model.addAttribute("message", String.format("Coder %d removed", id));
 		} catch (Exception ex) {
-			logger.error("Can't delete " + id);
+			String message = "Can't delete coder " + id;
+			logger.error(message);
+			model.addAttribute("message", message);
 		}
 
 		model.addAttribute("employees", repo.findByJobId(CODER));
