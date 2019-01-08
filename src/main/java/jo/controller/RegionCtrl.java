@@ -16,7 +16,7 @@ public class RegionCtrl {
 	private static final Logger logger = LoggerFactory.getLogger(RegionCtrl.class);
 
 	@Autowired
-	RegionRepository repo;
+	private RegionRepository repo;
 
 	@GetMapping("/regions")
 	public String showRegions(Model model) {
