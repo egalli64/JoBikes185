@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>ThymeLeaf basic stuff</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/myStyles.css}">
 </head>
 <body>
 	<h1>Fake Regions</h1>
@@ -44,5 +45,18 @@
 			th:text="${cur.name}">...</option>
 	</select>
 	<br />
+	
+	Users:
+	<br />
+	<table>
+		<tr>
+			<th>NAME</th>
+			<th>PASSWORD</th>
+		</tr>
+		<tr th:each="user: ${users}">
+			<td th:text="${user[0]}">...</td>
+			<td th:text="${user[1]}">...</td>
+		</tr>
+	</table>
 </body>
 </html>

@@ -25,6 +25,12 @@ public class JBController {
 	@Value("${admin.password}")
 	private String adminPwd;
 
+	@Value("${user}")
+	private String myUsr;
+
+	@Value("${user.password}")
+	private String myUsrPwd;
+
 	// this is not a good idea!
 	@GetMapping("/login")
 	public String loginByGet( //
@@ -45,11 +51,14 @@ public class JBController {
 		logger.debug("Login attempt for user: " + user);
 
 		model.addAttribute("user", user);
-		if (user.equals(admin) && password.equals(adminPwd)) {
-			return "manager";
-		} else {
-			return "checkPassword";
+		if (user.equals(admin)) {
+			if (password.equals(adminPwd)) {
+				return "manager";
+			}
+		} else if (user.equals(myUsr) && password.equals(myUsrPwd)) {
+			return "employees";
 		}
+		return "checkPassword";
 	}
 
 	@GetMapping("/simple")
@@ -60,6 +69,12 @@ public class JBController {
 				new Region(2, "South Europe")) //
 		);
 		model.addAttribute("user", "Tom Jones");
+
+		model.addAttribute("users", Arrays.asList( //
+				new String[] { admin, adminPwd }, //
+				new String[] { myUsr, myUsrPwd }) //
+		);
+
 		return "simple";
 	}
 }
