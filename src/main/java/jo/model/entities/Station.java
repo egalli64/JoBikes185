@@ -1,3 +1,9 @@
+/**
+ * (c) 2019 ACME Inc.
+ * Entity for the STATIONS Oracle Table
+ * 
+ * @author Arturo
+ */
 package jo.model.entities;
 
 import javax.persistence.Column;
@@ -54,6 +60,5 @@ public class Station {
 		public void setCityId(Integer cityId) {
 			this.cityId = cityId;
 		}
-
 	}
 }
