@@ -2,7 +2,8 @@
  * (c) 2019 ACME Inc.
  * Entity for the STATIONS Oracle Table
  * 
- * @author Arturo
+ * @author Arturo 
+ * @author Susanna
  */
 package jo.model.entities;
 
@@ -11,46 +12,42 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-public class Station {
-
 	@Entity
 	@Table(name = "STATIONS")
-	public class City {
+	public class Station {
 		@Id
 		@Column(name = "STATION_ID")
-		private Integer stationId;
+		private Integer id;
 
 		@Column(name = "STATION_NAME")
-		private String stationName;
+		private String name;
 
 		@Column(name = "CITY_ID")
 		private Integer cityId;
 
-		public City() {
-			super();
+		public Station() {
 		}
 
-		public City(Integer stationId, String stationName, Integer cityId) {
-			super();
-			this.stationId = stationId;
-			this.stationName = stationName;
+		public Station(Integer id, String name, Integer cityId) {
+			this.id = id;
+			this.name = name;
 			this.cityId = cityId;
 		}
 
-		public Integer getStationId() {
-			return stationId;
+		public Integer getId() {
+			return id;
 		}
 
-		public void setStationId(Integer stationId) {
-			this.stationId = stationId;
+		public void setId(Integer id) {
+			this.id = id;
 		}
 
-		public String getStationName() {
-			return stationName;
+		public String getName() {
+			return name;
 		}
 
-		public void setStationName(String stationName) {
-			this.stationName = stationName;
+		public void setName(String name) {
+			this.name = name;
 		}
 
 		public Integer getCityId() {
@@ -60,5 +57,12 @@ public class Station {
 		public void setCityId(Integer cityId) {
 			this.cityId = cityId;
 		}
+
+		@Override
+		public String toString() {
+			return "Station [id=" + id + ", name=" + name + ", cityId=" + cityId + "]";
+		}
+
+		
 	}
-}
+
