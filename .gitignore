@@ -2,6 +2,9 @@
 .mvn/
 mvnw*
 
+### DBEAVER ###
+.dbeaver*
+
 ### STS ###
 .apt_generated
 .classpath
