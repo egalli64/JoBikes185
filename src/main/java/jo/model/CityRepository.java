@@ -6,17 +6,11 @@
  */
 package jo.model;
 
-import java.util.List;
-
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import jo.model.entities.City;
-import jo.model.entities.Region;
 
 @Repository
-public interface CityRepository extends CrudRepository<City,Integer> {
-	
-	
-
+public interface CityRepository extends CrudRepository<City, Integer> {
 }
