@@ -11,8 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import jo.model.StationRepository;
+import jo.model.entities.Station;
 
 @Controller
 public class StationCtrl {
@@ -26,5 +28,19 @@ public class StationCtrl {
 		logger.debug("Get all stations");
 		model.addAttribute("stations", repo.findAll());
 		return "stations";
-    }
+	}
+
+	@GetMapping("/stations/save")
+	public String saveStation( //
+			@RequestParam(name = "id") Integer id, //
+			@RequestParam(name = "name") String name, //
+			@RequestParam(name = "cityId") Integer cityId, //
+			Model model) {
+		Station station = new Station(id, name, cityId);
+		logger.debug("Save station " + station);
+		repo.save(station);
+
+		model.addAttribute("stations", repo.findAll());
+		return "stations";
+	}
 }
