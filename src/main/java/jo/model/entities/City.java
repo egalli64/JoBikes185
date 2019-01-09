@@ -17,7 +17,7 @@ import javax.persistence.Table;
 public class City {
 	@Id
 	@Column(name = "CITY_ID")
-	private int id;
+	private Integer id;
 
 	@Column(name = "CITY_NAME")
 	private String name;
@@ -26,7 +26,7 @@ public class City {
 
 	}
 
-	public City(int id, String name) {
+	public City(Integer id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
