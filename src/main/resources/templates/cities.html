@@ -20,5 +20,27 @@
 			<td th:text="${cur.name}">...</td>
 		</tr>
 	</table>
+
+
+	<h2>Save city:</h2>
+	<form action="/cities/save">
+		<label>City id: <input name="id" required="required"></label>
+		<br />
+		<label>City name: <input name="name" required="required"></label>
+		<div>
+			<button>Save</button>
+		</div>
+	</form>
+
+	<h2>Delete City:</h2>
+	<form action="/cities/delete">
+		<select name="id">
+			<option th:each="cur: ${cities}" th:value="${cur.id}"
+				th:text="${cur.name}">...</option>
+		</select>
+		<div>
+			<button>Delete city</button>
+		</div>
+	</form>
 </body>
 </html>
