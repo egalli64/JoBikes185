@@ -1,0 +1,24 @@
+<!-- (c) 2019 ACME Inc.
+	@author Karolina
+ -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Stations Manager</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/myStyles.css}">
+</head>
+<body>
+	<h1>Stations</h1>
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>NAME</th>
+			<th>CITY_ID</th>
+		</tr>
+		<tr th:each="cur: ${stations}">
+			<td th:text="${cur.id}">...</td>
+			<td th:text="${cur.name}">...</td>
+			<td th:text="${cur.cityId}">...</td>
+		</tr>
+	</table>
