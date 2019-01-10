@@ -84,3 +84,7 @@ DROP TABLE bikes;
 
 SELECT * FROM bikes;
 
+
+ALTER TABLE preferences
+  ADD JAVAScript NUMBER(1);
+
