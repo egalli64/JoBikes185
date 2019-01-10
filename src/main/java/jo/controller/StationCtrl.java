@@ -1,7 +1,8 @@
 /**
  * (c) 2019 ACME Inc.
  * Controller for Stations
- * @author Ariam
+ * @author Ariam 
+ * @author Arturo
  */
 package jo.controller;
 
@@ -43,4 +44,16 @@ public class StationCtrl {
 		model.addAttribute("stations", repo.findAll());
 		return "stations";
 	}
+
+	@GetMapping("/stations/delete")
+	public String deleteRegion( //
+			@RequestParam int id, //
+			Model model) {
+		logger.debug("Delete station  " + id);
+		repo.deleteById(id);
+
+		model.addAttribute("stations", repo.findAll());
+		return "stations";
+	}
+
 }
