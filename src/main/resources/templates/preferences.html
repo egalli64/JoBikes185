@@ -11,7 +11,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Favorites</title>
+<title>Coders Preferences</title>
 <link rel="stylesheet" type="text/css" th:href="@{/css/myStyles.css}">
 </head>
 <body>
@@ -42,29 +42,16 @@
 			<td th:text="${cur.html}">...</td>
 		</tr>
 	</table>
-
-
 	<h2>Add Coder:</h2>
 	<form action="/preferences/save">
-		<label>Coder Name: <input name="id" required="required"></label>
+		<label>Coder Name: <input name="name" required="required"></label>
 		<p>
-			Select Preference: <br> SQL <select name="SQL preference">
-				<option value="none">-</option>
-				<option value="I">I</option>
-				<option value="II">II</option>
-				<option value="III">III</option>
-			</select> Java <select name="Java preference">
-				<option value="none">-</option>
-				<option value="I">I</option>
-				<option value="II">II</option>
-				<option value="III">III</option>
-			</select> HTML <select name="HTML preference">
-				<option value="none">-</option>
-				<option value="I">I</option>
-				<option value="II">II</option>
-				<option value="III">III</option>
-			</select>
-		</p>
+			<label>SQL: <input name="sql" required="required"></label>
+		<p>
+			<label>JAVA: <input name="java" required="required"></label>
+		<p>
+			<label>HTML: <input name="html" required="required"></label>
+		<p>
 		<div>
 			<button>Add Coder!</button>
 		</div>
@@ -73,13 +60,12 @@
 	<h2>Remove Coder:</h2>
 	<form action="/preferences/delete">
 		<select name="name">
-			<option th:each="cur: ${faves}" th:value="${cur.name}"
+			<option th:each="cur: ${preferences}" th:value="${cur.name}"
 				th:text="${cur.name}">...</option>
 		</select>
 		<div>
 			<button>Ban coder!</button>
 		</div>
-
 	</form>
 </body>
 </html>
