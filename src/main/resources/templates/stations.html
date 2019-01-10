@@ -1,5 +1,8 @@
 <!-- (c) 2019 ACME Inc.
+	
+	@author Federico
 	@author Giuseppe
+	
  -->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
@@ -10,6 +13,9 @@
 </head>
 <body>
 	<h1>Stations</h1>
+	
+	<p>Jump to the <a href="cities">cities</a> page!</p>
+	
 	<table>
 		<tr>
 			<th>ID</th>
@@ -24,14 +30,14 @@
 	</table>
 
 
-	<h2>Save station:</h2>
+	<h2>Add station:</h2>
 	<form action="/stations/save">
 		<label>Station id: <input name="id" required="required"></label>
 		<br /> <label>Station name: <input name="name"
 			required="required"></label> <br /> <label>City_id: <input
 			name="cityId" required="required"></label>
 		<div>
-			<button>Save</button>
+			<button>Create Station!</button>
 		</div>
 	</form>
 
@@ -42,7 +48,7 @@
 				th:text="${cur.name}">...</option>
 		</select>
 		<div>
-			<button>Delete Station</button>
+			<button>Destroy Station!</button>
 		</div>
 	</form>
 </body>
