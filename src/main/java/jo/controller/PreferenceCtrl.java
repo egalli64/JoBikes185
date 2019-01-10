@@ -53,7 +53,7 @@ public class PreferenceCtrl {
 		logger.debug("Delete worker  " + name);
 		repo.deleteById(name);
 
-		model.addAttribute("preference", repo.findAll());
+		model.addAttribute("preferences", repo.findAll());
 		return "preferences";
 	}
 
