@@ -22,6 +22,8 @@ CREATE TABLE STATIONS(
 
 SELECT * FROM STATIONS;
 
+
+
 CREATE TABLE preferences (
 	NAME VARCHAR2(25),
 	SQL NUMBER(1),
@@ -48,6 +50,13 @@ INSERT INTO preferences (NAME, SQL, Java, HTML) VALUES ('Susanna', 2, 1, 3);
 
 delete from preferences
 where name = '';
+
+ALTER TABLE preferences
+	ADD (JAVAScript NUMBER(1)
+		DEFAULT 1);
+ALTER TABLE preferences
+	DROP COLUMN JAVAScript;
+
 
 
 CREATE TABLE BIKE_USERS(
@@ -85,6 +94,4 @@ DROP TABLE bikes;
 SELECT * FROM bikes;
 
 
-ALTER TABLE preferences
-  ADD JAVAScript NUMBER(1);
 
