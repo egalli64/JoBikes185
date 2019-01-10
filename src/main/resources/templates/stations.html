@@ -1,11 +1,11 @@
 <!-- (c) 2019 ACME Inc.
-	@author Karolina
+	@author Giuseppe
  -->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Stations Manager</title>
+<title>Cities Manager</title>
 <link rel="stylesheet" type="text/css" th:href="@{/css/myStyles.css}">
 </head>
 <body>
@@ -22,3 +22,29 @@
 			<td th:text="${cur.cityId}">...</td>
 		</tr>
 	</table>
+
+
+	 <h2>Save station:</h2>
+	<form action="/stations/save">
+		<label>Station id: <input name="id" required="required"></label>
+		<br />
+		<label>Station name: <input name="name" required="required"></label>
+		<br />
+		<label>City_id: <input name="cityId" required="required"></label>
+		<div>
+			<button>Save</button>
+		</div>
+	</form>
+
+	<h2>Delete Station:</h2>
+	<form action="/stations/delete">
+		<select name="id">
+			<option th:each="cur: ${stations}" th:value="${cur.id}"
+				th:text="${cur.name}">...</option>
+		</select>
+		<div>
+			<button>Delete Station</button>
+		</div>
+	</form>
+</body>
+</html>
