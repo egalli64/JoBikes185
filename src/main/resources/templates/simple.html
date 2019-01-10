@@ -23,10 +23,16 @@
 	<div th:object="${data[0]}">
 		Id: <span th:text="*{id}">...</span>. <br /> Name: <span
 			th:text="*{name}">...</span>.
+		<p>Id converted to roman:
+		<th:block th:switch="*{id}">
+			<span th:case="1"> I </span>
+			<span th:case="2"> II </span>
+			<span th:case="*"> III </span>
+		</th:block>
+		</p>
 	</div>
 
-	Table w/ th:each:
-	<br />
+	<h3>Table w/ th:each:</h3>
 	<table>
 		<tr>
 			<th>ID</th>
@@ -38,8 +44,7 @@
 		</tr>
 	</table>
 
-	Select option w/ th:each:
-	<br />
+	<h3>Select option w/ th:each:</h3>
 	<select name="selected">
 		<option th:each="cur: ${data}" th:value="${cur.id}"
 			th:text="${cur.name}">...</option>
