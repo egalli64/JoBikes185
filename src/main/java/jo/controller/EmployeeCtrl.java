@@ -1,6 +1,7 @@
 package jo.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,6 +28,21 @@ public class EmployeeCtrl {
 		logger.debug("All employees");
 		model.addAttribute("employees", repo.findAll());
 		return "employees";
+	}
+
+	@GetMapping("/employees/find")
+	public String find( //
+			@RequestParam Long id, //
+			Model model) {
+		logger.debug("Find employee by id: " + id);
+
+		Optional<Employee> employee = repo.findById(id);
+		if(employee.isPresent()) {
+			model.addAttribute("employee", employee.get());			
+		} else {
+			model.addAttribute("id", id);
+		}
+		return "employee";
 	}
 
 	@GetMapping("/coders")
