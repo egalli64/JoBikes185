@@ -21,3 +21,30 @@ CREATE TABLE STATIONS(
 );
 
 SELECT * FROM STATIONS;
+
+CREATE TABLE preferences (
+	NAME VARCHAR2(25),
+	SQL NUMBER(1),
+	Java NUMBER(1),
+	HTML NUMBER(1),
+
+	CONSTRAINT NAME_PK PRIMARY KEY (NAME)
+)
+
+DROP TABLE preferences;
+
+SELECT * FROM preferences
+
+INSERT INTO preferences (NAME, SQL, Java, HTML) VALUES ('Giovanna', 1, 3, 2);
+INSERT INTO preferences (NAME, SQL, Java, HTML) VALUES ('Alessio', 1, 2, 3);
+INSERT INTO preferences (NAME, SQL, Java, HTML) VALUES ('Karolina', 1, 3, 2);
+INSERT INTO preferences (NAME, SQL, Java, HTML) VALUES ('Ariam', 1, 1, 1);
+INSERT INTO preferences (NAME, SQL, Java, HTML) VALUES ('Federico', 1, 1, 1);
+INSERT INTO preferences (NAME, SQL, Java, HTML) VALUES ('Arturo', 1, 1, 1);
+INSERT INTO preferences (NAME, SQL, Java, HTML) VALUES ('Virginia', 1, 1, 1);
+INSERT INTO preferences (NAME, SQL, Java, HTML) VALUES ('Selena', 1, 1, 1);
+INSERT INTO preferences (NAME, SQL, Java, HTML) VALUES ('Giuseppe', 1, 1, 1);
+INSERT INTO preferences (NAME, SQL, Java, HTML) VALUES ('Susanna', 1, 1, 1);
+
+delete from preferences
+where name = '';
