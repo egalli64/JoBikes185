@@ -25,10 +25,19 @@ public class CityCtrl {
 	@Autowired
 	CityRepository repo;
 
+	
+
 	@GetMapping("/cities")
+	public String showCitiesOrderedbyId(Model model) {
+		logger.debug("Get all cities");
+		model.addAttribute("cities", repo.findAllByOrderById());
+		return "cities";
+	}
+	
+	@GetMapping("/cities/order")
 	public String showCities(Model model) {
 		logger.debug("Get all cities");
-		model.addAttribute("cities", repo.findAll());
+		model.addAttribute("cities", repo.findAllByOrderByName());
 		return "cities";
 	}
 
