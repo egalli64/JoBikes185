@@ -1,5 +1,7 @@
 package jo.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +32,30 @@ public class EmployeeCtrl {
 	@GetMapping("/coders")
 	public String allCoders(Model model) {
 		logger.debug("All coders");
-		model.addAttribute("employees", repo.findByJobId(CODER));
+		model.addAttribute("employees", repo.findByJobIdOrderById(CODER));
+		return "coders";
+	}
+
+	@GetMapping("/coders/order")
+	public String orderCoders( //
+			@RequestParam String by, //
+			Model model) {
+		logger.debug("Order coders by " + by);
+
+		List<Employee> coders;
+		switch (by) {
+		case "First":
+			coders = repo.findByJobIdOrderByFirstName(CODER);
+			break;
+		case "Last":
+			coders = repo.findByJobIdOrderByLastName(CODER);
+			break;
+		default:
+			coders = repo.findByJobIdOrderById(CODER);
+			break;
+		}
+
+		model.addAttribute("employees", coders);
 		return "coders";
 	}
 
@@ -48,7 +73,7 @@ public class EmployeeCtrl {
 			logger.error(message);
 			model.addAttribute("message", message);
 		}
-		model.addAttribute("employees", repo.findByJobId(CODER));
+		model.addAttribute("employees", repo.findByJobIdOrderById(CODER));
 		return "coders";
 	}
 
@@ -67,7 +92,7 @@ public class EmployeeCtrl {
 			logger.error(message);
 			model.addAttribute("message", message);
 		}
-		model.addAttribute("employees", repo.findByJobId(CODER));
+		model.addAttribute("employees", repo.findByJobIdOrderById(CODER));
 		return "coders";
 	}
 
@@ -86,7 +111,7 @@ public class EmployeeCtrl {
 			model.addAttribute("message", message);
 		}
 
-		model.addAttribute("employees", repo.findByJobId(CODER));
+		model.addAttribute("employees", repo.findByJobIdOrderById(CODER));
 		return "coders";
 	}
 }

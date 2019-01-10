@@ -1,0 +1,89 @@
+<!-- (c) 2019 ACME Inc.
+	
+	Coders team table.
+	
+	@author Federico
+	@author Selena
+	@author Arturo
+	
+ -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Favorites</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/myStyles.css}">
+</head>
+<body>
+	<h1>Party People!</h1>
+	
+	<p align = right>
+	<img src="http://2.bp.blogspot.com/_yqyB5Ah3BL4/SZHxVRFVhLI/AAAAAAAAAGs/n2Gvub3ageQ/s400/jackass%5B1%5D.jpg" width="200" height="200" />
+	</p>
+	
+	<p>
+	<a href="localhost:8080/index"><button>Jump to the index page!</button></a>
+	</p>
+	
+	<table>
+		<tr>
+			<th>NAME</th>
+			<th>SQL</th>
+			<th>JAVA</th>
+			<th>HTML</th>
+		</tr>
+		<tr th:each="cur: ${faves}">
+			<td th:text="${cur.name}">...</td>
+			<td th:text="${cur.sql}">...</td>
+			<td th:text="${cur.java}">...</td>
+			<td th:text="${cur.html}">...</td>
+		</tr>
+	</table>
+
+ 
+	<h2>Add Coder:</h2>
+	<form action="/faves/save">
+		<label>Coder Name: <input name="id" required="required"></label>
+		<p>
+			Select Preference:
+			<br>
+			SQL
+			<select name="SQL preference">
+				<option value="none">-</option>
+				<option value="I">I</option>
+				<option value="II">II</option>
+				<option value="III">III</option>
+			</select>
+			Java
+			<select name="Java preference">
+				<option value="none">-</option>
+				<option value="I">I</option>
+				<option value="II">II</option>
+				<option value="III">III</option>
+			</select>
+			HTML
+			<select name="HTML preference">
+				<option value="none">-</option>
+				<option value="I">I</option>
+				<option value="II">II</option>
+				<option value="III">III</option>
+			</select>
+		</p>
+		<div>
+			<button>Add Coder!</button>
+		</div>
+	</form>
+
+	<h2>Remove Coder:</h2>
+	<form action="/faves/delete">
+		<select name="name">
+			<option th:each="cur: ${faves}" th:value="${cur.name}"
+				th:text="${cur.name}">...</option>
+		</select>
+		<div>
+			<button>Ban coder!</button>
+		</div>
+		
+	</form>
+</body>
+</html>

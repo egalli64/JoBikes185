@@ -37,6 +37,20 @@
 			<button>Add City!</button>
 		</div>
 	</form>
+	
+	<h2>Edit city:</h2>
+	<form action="/cities/save">
+		<select name="id">
+			<option th:each="cur: ${cities}" th:value="${cur.id}"
+				th:text="${cur.name}">...</option>
+		</select>
+		<br />
+		<label>City name: <input name="name" required="required"></label>
+		<div>
+			<button>Edit City!</button>
+		</div>
+	</form>
+	
 
 	<h2>Delete City:</h2>
 	<form action="/cities/delete">
