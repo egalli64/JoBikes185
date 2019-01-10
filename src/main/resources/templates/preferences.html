@@ -17,12 +17,6 @@
 <body>
 	<h1>Party People!</h1>
 
-	<p align=right>
-		<img
-			src="http://2.bp.blogspot.com/_yqyB5Ah3BL4/SZHxVRFVhLI/AAAAAAAAAGs/n2Gvub3ageQ/s400/jackass%5B1%5D.jpg"
-			width="200" height="200" />
-	</p>
-
 	<p>
 		<a href="localhost:8080/index"><button>Jump to the index
 				page!</button></a>
@@ -42,19 +36,26 @@
 			<td th:text="${cur.html}">...</td>
 		</tr>
 	</table>
+
+
 	<h2>Add Coder:</h2>
 	<form action="/preferences/save">
 		<label>Coder Name: <input name="name" required="required"></label>
 		<p>
-			<label>SQL: <input name="sql" required="required"></label>
-		<p>
-			<label>JAVA: <input name="java" required="required"></label>
-		<p>
-			<label>HTML: <input name="html" required="required"></label>
-		<p>
-		<div>
-			<button>Add Coder!</button>
-		</div>
+
+			SQL <select name="sql">
+				<option value="1" selected>1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+			</select> JAVA <select name="java">
+				<option value="1" selected>1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+			</select> HTML <select name="html">
+				<option value="1" selected>1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+			</select> <input type="submit" value="Add Coders!" />
 	</form>
 
 	<h2>Remove Coder:</h2>
@@ -66,6 +67,7 @@
 		<div>
 			<button>Ban coder!</button>
 		</div>
+
 	</form>
 </body>
 </html>
