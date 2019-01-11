@@ -26,11 +26,11 @@
 			<td th:text="${cur.name}">...</td>
 		</tr>
 	</table>
-	<form action="/cities/order">
+	<!-- >form action="/cities/order">
 	<div>
 			<button >Sort City by Name</button>
 		</div>
-	</form>
+	</form-->
 
 
 	<h2>Add city:</h2>
@@ -65,6 +65,16 @@
 		</select>
 		<div>
 			<button>Delete City!</button>
+		</div>
+	</form>
+	
+	<h2>Order cities:</h2>
+	<form action="/cities/order">
+		<input type="radio" name="by" value="id" checked="checked" />Id<br />
+		<input type="radio" name="by" value="name" />Name<br />
+		
+		<div>
+			<button>Sort</button>
 		</div>
 	</form>
 </body>

@@ -7,6 +7,8 @@
  */
 package jo.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import jo.model.CityRepository;
 import jo.model.entities.City;
+
 
 @Controller
 public class CityCtrl {
@@ -35,9 +38,25 @@ public class CityCtrl {
 	}
 	
 	@GetMapping("/cities/order")
-	public String showCities(Model model) {
-		logger.debug("Get all cities");
-		model.addAttribute("cities", repo.findAllByOrderByName());
+	public String orderPreferences( //
+			@RequestParam String by, //
+			Model model) {
+		logger.debug("Order cities by " + by);
+
+		List<City> cities;
+		switch (by) {
+		case "id":
+			cities = repo.findAllByOrderById();
+			break;
+		case "name":
+			cities = repo.findAllByOrderByName();
+			break;
+		default:
+			cities = repo.findAllByOrderById();
+			break;
+		}
+
+		model.addAttribute("cities", cities);
 		return "cities";
 	}
 
