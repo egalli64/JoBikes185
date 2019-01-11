@@ -37,10 +37,10 @@
 	<form action="/stations/save">
 		<label>Station id: <input name="id" required="required"></label>
 		<br /> <label>Station name: <input name="name"
-			required="required"></label> <br /> <!--  <select name="name">
+			required="required"></label> <br /> Select city name: <select name="name">
 			<option th:each="cur: ${cities}" th:value="${cur.id}"
 				th:text="${cur.name}">...</option> 
-		</select>-->
+		</select>
 		<div>
 			<button>Create Station!</button>
 		</div>
@@ -55,10 +55,10 @@
 			</select>
 		</p>
 		<label>Station name: <input name="name" required="required"></label>
-		<br /> <!--<select name="name">
+		<br /> Select city name: <select name="name">
 			<option th:each="cur: ${cities}" th:value="${cur.id}"
 				th:text="${cur.name}">...</option>
-		</select>-->
+		</select>
 		<div>
 			<button>Edit Station!</button>
 		</div>
