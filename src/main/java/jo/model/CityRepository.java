@@ -12,12 +12,10 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import jo.model.entities.City;
-import jo.model.entities.Employee;
 
 @Repository
 public interface CityRepository extends CrudRepository<City, Integer> {
- 	List<City> findAllByOrderById();  	
+	List<City> findAllByOrderById();
+
 	List<City> findAllByOrderByName();
-
-
 }
