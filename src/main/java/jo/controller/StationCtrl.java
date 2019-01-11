@@ -6,6 +6,8 @@
  */
 package jo.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,11 +28,28 @@ public class StationCtrl {
 
 	@GetMapping("/stations")
 	public String showStations(Model model) {
-		logger.debug("Get all stations");
-		model.addAttribute("stations", repo.findAll());
-		return "stations";
+		return orderStations("ID", model);
 	}
 
+	@GetMapping("/stations/order")
+	public String orderStations( //
+			@RequestParam String by, //
+			Model model) {
+		logger.debug("Order stations by " + by);
+
+		List<Station> stations;
+		switch (by) {
+		case "Name":
+			stations = repo.findAllByOrderByName();
+			break;
+		default:
+			stations = repo.findAllByOrderById();
+			break;
+		}
+		model.addAttribute("stations", stations);
+		return "stations";
+	}
+	
 	@GetMapping("/stations/save")
 	public String saveStation( //
 			@RequestParam(name = "id") Integer id, //
