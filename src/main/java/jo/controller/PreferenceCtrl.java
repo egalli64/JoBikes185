@@ -2,7 +2,7 @@
  * (c) 2019 ACME Inc.
  * Controller for Preferences
  * @author SuperCoolMegaFicoJavaTeam(SusiAriaPpe)
- *
+ * 
  */
 package jo.controller;
 
@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import jo.model.PreferenceRepository;
 import jo.model.entities.Preference;
-
 
 @Controller
 public class PreferenceCtrl {
@@ -39,8 +38,9 @@ public class PreferenceCtrl {
 			@RequestParam(name = "sql") Integer sql, //
 			@RequestParam(name = "java") Integer java, //
 			@RequestParam(name = "html") Integer html, //
+			@RequestParam(name = "javaScript") Integer javaScript, //
 			Model model) {
-		Preference preference = new Preference(name, sql,java,html);
+		Preference preference = new Preference(name, sql, java, html, javaScript);
 		logger.debug("Save Preference " + preference);
 		repo.save(preference);
 
@@ -58,6 +58,7 @@ public class PreferenceCtrl {
 		model.addAttribute("preferences", repo.findAll());
 		return "preferences";
 	}
+
 	@GetMapping("/preferences/order")
 	public String orderPreferences( //
 			@RequestParam String by, //
@@ -74,7 +75,10 @@ public class PreferenceCtrl {
 			break;
 		case "Html":
 			preferences = repo.findAllByOrderByHtml();
-		    break;	
+			break;
+		case "JavaScript":
+			preferences = repo.findAllByOrderByJavaScript();
+			break;
 		default:
 			preferences = repo.findAllByOrderByName();
 			break;

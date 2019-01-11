@@ -28,15 +28,19 @@ public class Preference {
 	@Column(name = "HTML")
 	private Integer html;
 
+	@Column(name = "JAVAScript")
+	private Integer javaScript;
+
 	public Preference() {
 
 	}
 
-	public Preference(String name, Integer sql, Integer java, Integer html) {
+	public Preference(String name, Integer sql, Integer java, Integer html, Integer javaScript) {
 		this.name = name;
 		this.sql = sql;
 		this.java = java;
 		this.html = html;
+		this.javaScript = javaScript;
 	}
 
 	public String getName() {
@@ -71,9 +75,17 @@ public class Preference {
 		this.html = html;
 	}
 
-	@Override
-	public String toString() {
-		return "Preference [name=" + name + ", sql=" + sql + ", java=" + java + ", html=" + html + "]";
+	public Integer getJavaScript() {
+		return javaScript;
 	}
 
+	public void setJavaScript(Integer javaScript) {
+		this.javaScript = javaScript;
+	}
+
+	@Override
+	public String toString() {
+		return "Preference [name=" + name + ", sql=" + sql + ", java=" + java + ", html=" + html + ", javaScript="
+				+ javaScript + "]";
+	}
 }

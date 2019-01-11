@@ -17,4 +17,5 @@ public interface PreferenceRepository extends CrudRepository<Preference, String>
 	List<Preference> findAllByOrderBySql();
     List<Preference> findAllByOrderByJava();
     List<Preference> findAllByOrderByHtml();
+    List<Preference> findAllByOrderByJavaScript();
 }
