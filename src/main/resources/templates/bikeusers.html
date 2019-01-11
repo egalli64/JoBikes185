@@ -1,0 +1,76 @@
+<!-- (c) 2019 ACME Inc.
+
+	@author GiovAlePpe
+
+ -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Cities Manager</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/myStyles.css}">
+</head>
+<body>
+	<h1>Bike Users</h1>
+	
+	<p>Jump to the <a href="/stations">stations</a> page!</p>
+	
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>FIRST NAME</th>
+			<th>LAST NAME</th>
+		</tr>
+		<tr th:each="cur: ${bikeusers}">
+			<td th:text="${cur.id}">...</td>
+			<td th:text="${cur.firstName}">...</td>
+			<td th:text="${cur.lastName}">...</td>
+		</tr>
+	</table>
+	<form action="/bikeusers/orderbyfirstname">
+	<div>
+			<button >Sort bike users by first Name</button>
+		</div>
+	</form>
+	
+		<form action="/bikeusers/orderbylastname">
+	<div>
+			<button >Sort bike users by last Name</button>
+		</div>
+	</form>
+	
+	<form action="/bikeusers">
+	<div>
+			<button >Sort bike users by Id</button>
+		</div>
+	</form>
+	
+
+
+	<h2>Add Bike User:</h2>
+	<form action="/bikeusers/save">
+		<label>Bike User id: <input name="id" required="required"></label>
+		<br />
+		<label>Bike User first name: <input name="firstname" required="required"></label>
+		<br />
+		<label>Bike User last name: <input name="lastname" required="required"></label>
+		<div>
+			<button>Add bike user!</button>
+		</div>
+	</form>
+	
+	
+	
+
+	<h2>Delete bike user:</h2>
+	<form action="/bikeusers/delete">
+		<select name="id">
+			<option th:each="cur: ${bikeusers}" th:value="${cur.id}"
+				th:text="|${cur.lastName} ${cur.firstName}|">...</option>
+		</select>
+		<div>
+			<button>Delete bike user!</button>
+		</div>
+	</form>
+</body>
+</html>
