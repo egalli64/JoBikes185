@@ -6,6 +6,8 @@
  */
 package jo.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +56,31 @@ public class PreferenceCtrl {
 		repo.deleteById(name);
 
 		model.addAttribute("preferences", repo.findAll());
+		return "preferences";
+	}
+	@GetMapping("/preferences/order")
+	public String orderPreferences( //
+			@RequestParam String by, //
+			Model model) {
+		logger.debug("Order preferences by " + by);
+
+		List<Preference> preferences;
+		switch (by) {
+		case "Sql":
+			preferences = repo.findAllByOrderBySql();
+			break;
+		case "Java":
+			preferences = repo.findAllByOrderByJava();
+			break;
+		case "Html":
+			preferences = repo.findAllByOrderByHtml();
+		    break;	
+		default:
+			preferences = repo.findAllByOrderByName();
+			break;
+		}
+
+		model.addAttribute("preferences", preferences);
 		return "preferences";
 	}
 

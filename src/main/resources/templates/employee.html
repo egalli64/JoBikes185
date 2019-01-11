@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Countries Manager</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/myStyles.css}">
+</head>
+<body>
+	<h1>Employee</h1>
+	<div th:if="${employee}">
+		Id: <span th:text="${employee.id}">...</span>
+		First Name: <span th:text="${employee.firstName}">...</span>
+		Last Name: <span th:text="${employee.lastName}">...</span>		
+	</div>
+	<div th:if="${id}">
+		Nothing found with id <span th:text="${id}"></span>
+	</div>
+</body>
+</html>
