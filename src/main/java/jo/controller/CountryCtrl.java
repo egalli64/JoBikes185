@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import jo.model.CountryRepository;
+import jo.model.RegionRepository;
 import jo.model.entities.Country;
 import jo.model.entities.Region;
 
@@ -21,6 +22,9 @@ public class CountryCtrl {
 
 	@Autowired
 	CountryRepository repo;
+
+	@Autowired
+	RegionRepository regionRepo;
 
 	@GetMapping("/countries")
 	public String allCountries(Model model) {
@@ -36,7 +40,7 @@ public class CountryCtrl {
 		Optional<Country> country = repo.findById(id.toUpperCase());
 		logger.debug(String.format("Country with id %s is %s", id, country));
 
-		model.addAttribute("country", country.orElse(new Country(id, "Unknown", 0)));
+		model.addAttribute("country", country.orElse(new Country(id, "Unknown", null)));
 		return "country";
 	}
 
@@ -44,10 +48,10 @@ public class CountryCtrl {
 	public String startingBy( //
 			@RequestParam String name, //
 			Model model) {
+		logger.debug("countries starting by " + name);
 		List<Country> countries = repo.findByNameLike(name + "%");
-		logger.debug(countries.toString());
 
-		model.addAttribute("message", "with name starting by " + name);
+		model.addAttribute("message", " with name starting by " + name);
 		model.addAttribute("countries", countries);
 		return "countries";
 	}
@@ -55,13 +59,19 @@ public class CountryCtrl {
 	@GetMapping("/countries/region")
 	public String countriesByRegion( //
 			@RequestParam int id, //
-			@RequestParam String name, //
 			Model model) {
-		Region region = new Region(id, name);
-		logger.debug("Countries by region " + region);
+		Optional<Region> region = regionRepo.findById(id);
+		logger.debug("Countries by region " + id);
 
-		model.addAttribute("countries", repo.findByRegId(id));
-		model.addAttribute("region", region);
+		if (region.isPresent()) {
+			Region cur = region.get();
+			List<Country> countries = repo.findByRegion(cur);
+			model.addAttribute("countries", countries);
+			model.addAttribute("region", cur);
+		} else {
+			model.addAttribute("region", new Region(id, ""));
+		}
+
 		return "countriesByRegion";
 	}
 
@@ -71,13 +81,20 @@ public class CountryCtrl {
 			@RequestParam String name, //
 			@RequestParam int rid, //
 			Model model) {
-		Country country = new Country(cid.toUpperCase(), name, rid);
-		logger.debug("Save country " + country);
-
-		repo.save(country);
-
-		model.addAttribute("countries", repo.findAll());
-		return "countries";
+		Optional<Region> region = regionRepo.findById(rid);
+		if (region.isPresent()) {
+			Region cur = region.get();
+			Country country = new Country(cid.toUpperCase(), name, cur);
+			logger.debug("Save country " + country);
+			repo.save(country);
+			model.addAttribute("region", cur);
+			model.addAttribute("countries", repo.findByRegion_id(rid));
+			return "countriesByRegion";
+		} else {
+			logger.error(String.format("Can't save country %d: missing region %d", cid, rid));
+			model.addAttribute("countries", repo.findAll());
+			return "countries";
+		}
 	}
 
 	@GetMapping("/countries/delete")
@@ -89,7 +106,16 @@ public class CountryCtrl {
 
 		repo.deleteById(cid);
 
-		model.addAttribute("countries", repo.findAll());
-		return "countries";
+		Optional<Region> region = regionRepo.findById(rid);
+		if (region.isPresent()) {
+			Region cur = region.get();
+			model.addAttribute("region", cur);
+			model.addAttribute("countries", repo.findByRegion(cur));
+			return "countriesByRegion";
+		} else {
+			logger.warn("Missing region " + rid);
+			model.addAttribute("countries", repo.findAll());
+			return "countries";
+		}
 	}
 }

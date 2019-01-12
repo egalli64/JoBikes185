@@ -3,6 +3,8 @@ package jo.model.entities;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,16 +17,17 @@ public class Country {
 	@Column(name = "COUNTRY_NAME")
 	private String name;
 
-	@Column(name = "REGION_ID")
-	private Integer regId;
+	@ManyToOne
+	@JoinColumn(name = "REGION_ID")
+	private Region region;
 
 	public Country() {
 	}
 
-	public Country(String id, String name, Integer regId) {
+	public Country(String id, String name, Region region) {
 		this.id = id;
 		this.name = name;
-		this.regId = regId;
+		this.region = region;
 	}
 
 	public String getId() {
@@ -35,8 +38,8 @@ public class Country {
 		return name;
 	}
 
-	public Integer getRegId() {
-		return regId;
+	public Region getRegion() {
+		return region;
 	}
 
 	public void setId(String id) {
@@ -47,12 +50,12 @@ public class Country {
 		this.name = name;
 	}
 
-	public void setRegId(Integer regId) {
-		this.regId = regId;
+	public void setRegion(Region region) {
+		this.region = region;
 	}
 
 	@Override
 	public String toString() {
-		return String.format("id=%s, name=%s, region=%d", id, name, regId);
+		return String.format("id=%s, name=%s, region=%s", id, name, region.toString());
 	}
 }

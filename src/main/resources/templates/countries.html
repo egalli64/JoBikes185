@@ -16,7 +16,7 @@
 		<tr th:each="country: ${countries}">
 			<td th:text="${country.id}">...</td>
 			<td th:text="${country.name}">...</td>
-			<td th:text="${country.regId}">...</td>
+			<td th:text="${country.region.name}">...</td>
 		</tr>
 	</table>
 </body>
