@@ -6,6 +6,8 @@
  */
 package jo.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,20 +33,29 @@ public class BikeUserCtrl {
 	public String showBikeUserOrderedbyId(Model model) {
 		logger.debug("Get all bikeusers");
 		model.addAttribute("bikeusers", repo.findAllByOrderById());
-		return "bikeusers";
+		return orderBikeUsers("Id",model);
 	}
 	
-	@GetMapping("/bikeusers/orderbylastname")
-	public String showBikeUserOrderedbyLastName(Model model) {
-		logger.debug("Get all bikeusers");
-		model.addAttribute("bikeusers", repo.findAllByOrderByLastName());
-		return "bikeusers";
-	}
-	
-	@GetMapping("/bikeusers/orderbyfirstname")
-	public String showBikeUser(Model model) {
-		logger.debug("Get all bikeusers");
-		model.addAttribute("bikeusers", repo.findAllByOrderByFirstName());
+	@GetMapping("/bikes/order")
+	public String orderBikeUsers( //
+			@RequestParam String by, //
+			Model model) {
+		logger.debug("Order bikes by " + by);
+
+		List<BikeUser> bikeUsers;
+		switch (by) {
+		
+		case "FirstName":
+			bikeUsers = repo.findAllByOrderByFirstName();
+			break;
+		case "LastName":
+			bikeUsers = repo.findAllByOrderByLastName();
+			break;
+		default:
+			bikeUsers = repo.findAllByOrderById();
+			break;
+		}
+		model.addAttribute("bikes", bikeUsers);
 		return "bikeusers";
 	}
 

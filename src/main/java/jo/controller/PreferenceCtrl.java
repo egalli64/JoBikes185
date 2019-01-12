@@ -76,7 +76,7 @@ public class PreferenceCtrl {
 		case "Html":
 			preferences = repo.findAllByOrderByHtml();
 			break;
-		case "JavaScript":
+		case "javaScript":
 			preferences = repo.findAllByOrderByJavaScript();
 			break;
 		default:

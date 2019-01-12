@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import jo.model.CityRepository;
 import jo.model.StationRepository;
 import jo.model.entities.Station;
 
@@ -25,6 +26,9 @@ public class StationCtrl {
 
 	@Autowired
 	private StationRepository repo;
+	
+	@Autowired
+	private CityRepository repoCity;
 
 	@GetMapping("/stations")
 	public String showStations(Model model) {
@@ -61,6 +65,7 @@ public class StationCtrl {
 		repo.save(station);
 
 		model.addAttribute("stations", repo.findAll());
+		model.addAttribute("cities", repoCity.findAll());
 		return "stations";
 	}
 

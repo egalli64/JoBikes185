@@ -23,13 +23,27 @@
 	</p>
 
 	<table>
+
 		<tr>
-			<th>Name</th>
-			<th>SQL</th>
-			<th>Java</th>
-			<th>HTML</th>
-			<th>JavaScript</th>
+
+			<th><form action="/preferences/order">
+					<input type="submit" name="by" value="Name" />
+				</form></th>
+			<th><form action="/preferences/order">
+					<input type="submit" name="by" value="Sql" />
+				</form></th>
+			<th><form action="/preferences/order">
+					<input type="submit" name="by" value="Java" />
+				</form></th>
+			<th><form action="/preferences/order">
+					<input type="submit" name="by" value="Html" />
+				</form></th>
+			<th><form action="/preferences/order">
+					<input type="submit" name="by" value="javaScript" />
+				</form></th>
+
 		</tr>
+
 		<tr th:each="cur: ${preferences}">
 			<td th:text="${cur.name}">...</td>
 			<td th:text="${cur.sql}">...</td>
@@ -57,17 +71,16 @@
 				<option value="1" selected>1</option>
 				<option value="2">2</option>
 				<option value="3">3</option>
-	 		</select> JavaScript <select name="javaScript">
+			</select> JavaScript <select name="javaScript">
 				<option value="1" selected>1</option>
 				<option value="2">2</option>
 				<option value="3">3</option>
-			</select> <input type="submit" value="Add Coders!" />
-	 
+			</select> <input type="submit" value="Add Coder!" />
 	</form>
-	
+
 	<h2>Edit Coder:</h2>
 	<form action="/preferences/save">
-		<h3> Select Coder to Edit: </h3>
+		<h3>Select Coder to Edit:</h3>
 		<select name="name">
 			<option th:each="cur: ${preferences}" th:value="${cur.name}"
 				th:text="${cur.name}">...</option>
@@ -86,7 +99,7 @@
 				<option value="1" selected>1</option>
 				<option value="2">2</option>
 				<option value="3">3</option>
-			 </select> JavaScript <select name="javaScript">
+			</select> JavaScript <select name="javaScript">
 				<option value="1" selected>1</option>
 				<option value="2">2</option>
 				<option value="3">3</option>
@@ -104,18 +117,6 @@
 		</div>
 
 	</form>
-	
-	<h2>Order preferences:</h2>
-	<form action="/preferences/order">
-		<input type="radio" name="by" value="Name" checked="checked" />Name<br />
-	    <input type="radio" name="by" value="Sql" />SQL<br />
-		<input type="radio" name="by" value="Java" />Java<br />
-		<input type="radio" name="by" value="Html" />HTML<br />
-		<input type="radio" name="by" value="javaScript" />JavaScript<br />
-		<div>
-			<button>Sort</button>
-		</div>
-	</form>
-	
+
 </body>
 </html>
