@@ -21,7 +21,6 @@ public class Region {
 	private String name;
 
 	@OneToMany(mappedBy="region", cascade = CascadeType.ALL)
-	@ElementCollection(targetClass=Country.class)
 	private Set<Country> countries;
 	
 	public Region() {
