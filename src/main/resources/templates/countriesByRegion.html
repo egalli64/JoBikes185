@@ -21,9 +21,9 @@
 	<h2>Save country in <span th:text="${region.name}">this region</span>:</h2>
 	<form action="/countries/save">
 		<label>Country id: <input name="cid" required="required"></label>
-		<br /> <label>Country name: <input name="name"
-			required="required"></label> <input type="hidden" name="rid"
-			th:value="${region.id}" />
+		<br />
+		<label>Country name: <input name="name" required="required"></label>
+		<input type="hidden" name="rid" th:value="${region.id}" />
 		<div>
 			<button>Save</button>
 		</div>
@@ -34,7 +34,8 @@
 		<select name="cid">
 			<option th:each="cur: ${countries}" th:value="${cur.id}"
 				th:text="${cur.name}">...</option>
-		</select> <input type="hidden" name="rid" id="regionId" th:value="${region.id}" />
+		</select>
+		<input type="hidden" name="rid" id="regionId" th:value="${region.id}" />
 		<div>
 			<button>Delete</button>
 		</div>
