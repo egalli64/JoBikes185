@@ -60,7 +60,7 @@
 			</select>
 		</p>
 		<label>Station name: <input name="name" required="required"></label>
-		<br /> Select city name: <select name="name">
+		<br /> Select city name: <select name="cityId">
 			<option th:each="cur: ${cities}" th:value="${cur.id}"
 				th:text="${cur.name}">...</option>
 		</select>
