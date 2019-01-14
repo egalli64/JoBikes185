@@ -46,11 +46,15 @@ public class StationCtrl {
 		case "Name":
 			stations = repo.findAllByOrderByName();
 			break;
+		case "Id":
+			stations = repo.findAllByOrderById();
+			break;
 		default:
 			stations = repo.findAllByOrderById();
 			break;
 		}
 		model.addAttribute("stations", stations);
+		model.addAttribute("cities", repoCity.findAll());
 		return "stations";
 	}
 	

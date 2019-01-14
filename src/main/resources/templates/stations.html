@@ -27,20 +27,25 @@
 		<tr th:each="cur: ${stations}">
 			<td th:text="${cur.id}">...</td>
 			<td th:text="${cur.name}">...</td>
-			<td th:text="${cur.name}">...</td>
-		    <td th:text="${cur.cityId}">...</td> 
+			<td th:text="${cur.cityId}">...</td>
 		</tr>
 	</table>
 
 
 	<h2>Add station:</h2>
 	<form action="/stations/save">
-		<label>Station id: <input name="id" required="required"></label>
-		<br /> <label>Station name: <input name="name"
-			required="required"></label> <br /> Select city name: <select name="name">
-			<option th:each="cur: ${cities}" th:value="${cur.id}"
-				th:text="${cur.name}">...</option> 
+		<label>Station ID: <input name="id" required="required"></label>
+		<br /> 
+		<label>Station name: <input name="name" required="required"></label> 
+		<br /> 
+		<div> Select city name: 
+		<!--  <select> -->
+			<select name="cityId">
+			<option th:each="cur: ${cities}" 
+					th:value="${cur.id}"
+					th:text="${cur.name}">...</option>
 		</select>
+		</div>
 		<div>
 			<button>Create Station!</button>
 		</div>
@@ -49,7 +54,7 @@
 	<h2>Edit station:</h2>
 	<form action="/stations/save">
 		<p>
-			Select station ID:<select name="id">
+			Select station ID: <select name="id">
 				<option th:each="cur: ${stations}" th:value="${cur.id}"
 					th:text="${cur.id}">...</option>
 			</select>

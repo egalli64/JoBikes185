@@ -36,11 +36,11 @@ public class BikeUserCtrl {
 		return orderBikeUsers("Id",model);
 	}
 	
-	@GetMapping("/bikes/order")
+	@GetMapping("/bikeusers/order")
 	public String orderBikeUsers( //
 			@RequestParam String by, //
 			Model model) {
-		logger.debug("Order bikes by " + by);
+		logger.debug("Order bike users by " + by);
 
 		List<BikeUser> bikeUsers;
 		switch (by) {
@@ -51,11 +51,14 @@ public class BikeUserCtrl {
 		case "LastName":
 			bikeUsers = repo.findAllByOrderByLastName();
 			break;
+		case "Id":
+			bikeUsers = repo.findAllByOrderById();
+			break;
 		default:
 			bikeUsers = repo.findAllByOrderById();
 			break;
 		}
-		model.addAttribute("bikes", bikeUsers);
+		model.addAttribute("bikeusers", bikeUsers);
 		return "bikeusers";
 	}
 

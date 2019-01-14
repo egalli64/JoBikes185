@@ -7,7 +7,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Cities Manager</title>
+<title>Bike Users</title>
 <link rel="stylesheet" type="text/css" th:href="@{/css/myStyles.css}">
 </head>
 <body>
@@ -27,25 +27,16 @@
 			<td th:text="${cur.lastName}">...</td>
 		</tr>
 	</table>
-	<form action="/bikeusers/orderbyfirstname">
-	<div>
-			<button >Sort bike users by first Name</button>
+	
+	<h2>Order bike users by:</h2>
+	<form action="/bikeusers/order">
+		<input type="radio" name="by" value="Id" checked="checked" />Id<br />
+		<input type="radio" name="by" value="LastName" />Last Name<br />
+		<input type="radio" name="by" value="FirstName" />First Name<br />
+		<div>
+			<button>Sort</button>
 		</div>
 	</form>
-	
-		<form action="/bikeusers/orderbylastname">
-	<div>
-			<button >Sort bike users by last Name</button>
-		</div>
-	</form>
-	
-	<form action="/bikeusers">
-	<div>
-			<button >Sort bike users by Id</button>
-		</div>
-	</form>
-	
-
 
 	<h2>Add Bike User:</h2>
 	<form action="/bikeusers/save">
@@ -59,8 +50,20 @@
 		</div>
 	</form>
 	
-	
-	
+		<h2>Edit Bike User:</h2>
+	<form action="/bikeusers/save">
+		<select name="id">
+			<option th:each="cur: ${bikeusers}" th:value="${cur.id}"
+				th:text="|${cur.lastName} ${cur.firstName}|">...</option>
+		</select>
+		<br />
+		<label>Bike User first name: <input name="firstname" required="required"></label>
+		<br />
+		<label>Bike User last name: <input name="lastname" required="required"></label>
+		<div>
+			<button>Edit bike user!</button>
+		</div>
+	</form>
 
 	<h2>Delete bike user:</h2>
 	<form action="/bikeusers/delete">
