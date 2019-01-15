@@ -29,6 +29,7 @@ public class PreferenceCtrl {
 	public String showPreferences(Model model) {
 		logger.debug("Get all preferences");
 		model.addAttribute("preferences", repo.findAll());
+		orderPreferences("name", model);
 		return "preferences";
 	}
 
