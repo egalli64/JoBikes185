@@ -1,0 +1,36 @@
+<!-- (c) 2019 ACME Inc.
+	
+	@author Karolina, Giovanna, Susanna
+	
+	
+ -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Bikes</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/myStyles.css}">
+</head>
+<body>
+	<h1>Bikes</h1>
+
+	<p>
+		Jump to the <a href="/bikeusers">Bike User</a> page!
+	</p>
+
+	<table>
+		<tr>
+			<th>BIKE_ID</th>
+			<th>CITY_ID</th>
+			<th>STATION_ID</th>
+			<th>BU_ID</th>
+		</tr>
+		<tr th:each="cur: ${bikes}">
+			<td th:text="${cur.bikeId}">...</td>
+			<td th:text="${cur.cityId}">...</td>
+			<td th:text="${cur.stationId}">...</td>
+			<td th:text="${cur.buId}">...</td>
+		</tr>
+	</table>
+</body>
+</html>
