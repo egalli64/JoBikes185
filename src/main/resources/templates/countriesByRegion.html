@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" th:href="@{/css/myStyles.css}">
 </head>
 <body>
-	<h1 th:if="${region.name.isEmpty()}">No country with id <span th:text="${region.id}">X</span></h1>
+	<h1 th:if="${region.name.isEmpty()}">No country with region id <span th:text="${region.id}">X</span></h1>
 
 	<div th:unless="${region.name.isEmpty()}">
 		<h1>Countries in <span th:text="${region.name}">region</span></h1>
