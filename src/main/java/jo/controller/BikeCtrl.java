@@ -92,6 +92,16 @@ public class BikeCtrl {
 		return "bikes";
 	}
 
+	@GetMapping("/bikes/save")
+	public String saveBike( //
+			@RequestParam(name = "id") Integer id, //
+			@RequestParam(name = "cityId") Integer cityId, //
+			@RequestParam(name = "stationId") Integer stationId, //
+			@RequestParam(name = "type") String type, //
+			Model model) {	
+		return saveBike(id, cityId, stationId, 0, type, model);
+	}
+	
 	@GetMapping("/bikes/delete")
 	public String deleteBike( //
 			@RequestParam Integer id, //
@@ -100,6 +110,9 @@ public class BikeCtrl {
 		repo.deleteById(id);
 
 		model.addAttribute("bikes", repo.findAll());
+		model.addAttribute("cities", repoCity.findAll());
+		model.addAttribute("stations", repoStation.findAll());
+		model.addAttribute("bikeusers", repoBikeUser.findAll());
 		return "bikes";
 	}
 }
