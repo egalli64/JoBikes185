@@ -51,14 +51,12 @@ public class BikeUserCtrl {
 		case "LastName":
 			bikeUsers = repo.findAllByOrderByLastName();
 			break;
-		case "Id":
-			bikeUsers = repo.findAllByOrderById();
-			break;
 		default:
 			bikeUsers = repo.findAllByOrderById();
 			break;
 		}
 		model.addAttribute("bikeusers", bikeUsers);
+		model.addAttribute("by", by);
 		return "bikeusers";
 	}
 

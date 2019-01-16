@@ -13,9 +13,15 @@
 </head>
 <body>
 	<h1>Cities</h1>
-	
-	<p>Jump to the <a href="/stations">stations</a> page!</p>
-	
+
+	<p>
+		<a href="/"><button>Jump to the index page!</button></a>
+	</p>
+
+	<p>
+		<a href="/stations"><button>Jump to the stations page!</button></a>
+	</p>
+
 	<table>
 		<tr>
 			<th>ID</th>
@@ -32,30 +38,41 @@
 		</div>
 	</form-->
 
+	<h2>Stations by city:</h2>
+
+	<form action="/stations/city">
+		<select name="id">
+			<option th:each="cur: ${cities}" th:value="${cur.id}"
+				th:text="${cur.name}">...</option>
+		</select>
+		<div>
+			<button>Select</button>
+		</div>
+	</form>
+
 
 	<h2>Add city:</h2>
 	<form action="/cities/save">
 		<label>City id: <input name="id" required="required"></label>
-		<br />
-		<label>City name: <input name="name" required="required"></label>
+		<br /> <label>City name: <input name="name"
+			required="required"></label>
 		<div>
 			<button>Add City!</button>
 		</div>
 	</form>
-	
+
 	<h2>Edit city:</h2>
 	<form action="/cities/save">
 		<select name="id">
 			<option th:each="cur: ${cities}" th:value="${cur.id}"
 				th:text="${cur.name}">...</option>
-		</select>
-		<br />
-		<label>City name: <input name="name" required="required"></label>
+		</select> <br /> <label>City name: <input name="name"
+			required="required"></label>
 		<div>
 			<button>Edit City!</button>
 		</div>
 	</form>
-	
+
 
 	<h2>Delete City:</h2>
 	<form action="/cities/delete">
@@ -67,12 +84,12 @@
 			<button>Delete City!</button>
 		</div>
 	</form>
-	
+
 	<h2>Order cities:</h2>
 	<form action="/cities/order">
 		<input type="radio" name="by" value="id" checked="checked" />Id<br />
 		<input type="radio" name="by" value="name" />Name<br />
-		
+
 		<div>
 			<button>Sort</button>
 		</div>

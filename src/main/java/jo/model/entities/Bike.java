@@ -17,52 +17,47 @@ import javax.persistence.Table;
 public class Bike {
 	@Id
 	@Column(name = "BIKE_ID")
-	private String id;
-
-	@Column(name = "BIKEUSER_ID")
-	private Integer bikeUserId;
+	private Integer id;
+	
+	@Column(name = "CITY_ID")
+	private Integer cityId;
 	
 	@Column(name = "STATION_ID")
 	private Integer stationId;
 	
-	@Column(name = "CITY_ID")
-	private Integer cityId;
+	@Column(name = "BU_ID")
+	private Integer bikeUserId;
 
+	@Column(name = "TYPE")
+	private String  type;
 	
 	public Bike() {
 
 	}
 
-	public Bike(String id, Integer bikeUserId, Integer stationId, Integer cityId) {
+	public Bike(Integer id, Integer cityId, Integer stationId, Integer bikeUserId, String type) {
 		super();
 		this.id = id;
-		this.bikeUserId = bikeUserId;
-		this.stationId = stationId;
 		this.cityId = cityId;
+		this.stationId = stationId;
+		this.bikeUserId = bikeUserId;
+		this.type = type;
 	}
 
-	public String getId() {
+	public Bike(Integer id, Integer cityId, Integer stationId, String type) {
+		super();
+		this.id = id;
+		this.cityId = cityId;
+		this.stationId = stationId;
+		this.type = type;
+	}
+	
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Integer getBikeUserId() {
-		return bikeUserId;
-	}
-
-	public void setBikeUserId(Integer bikeUserId) {
-		this.bikeUserId = bikeUserId;
-	}
-
-	public Integer getStationId() {
-		return stationId;
-	}
-
-	public void setStationId(Integer stationId) {
-		this.stationId = stationId;
 	}
 
 	public Integer getCityId() {
@@ -73,10 +68,34 @@ public class Bike {
 		this.cityId = cityId;
 	}
 
+	public Integer getStationId() {
+		return stationId;
+	}
+
+	public void setStationId(Integer stationId) {
+		this.stationId = stationId;
+	}
+
+	public Integer getBikeUserId() {
+		return bikeUserId;
+	}
+
+	public void setBikeUserId(Integer bikeUserId) {
+		this.bikeUserId = bikeUserId;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
 	@Override
 	public String toString() {
-		return "Bike [id=" + id + ", bikeUserId=" + bikeUserId + ", stationId=" + stationId + ", cityId=" + cityId
-				+ "]";
+		return "Bike [id=" + id + ", cityId=" + cityId + ", stationId=" + stationId + ", bikeUserId=" + bikeUserId
+				+ ", type=" + type + "]";
 	}
 	
 }

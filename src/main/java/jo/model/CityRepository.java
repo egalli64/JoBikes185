@@ -16,6 +16,6 @@ import jo.model.entities.City;
 @Repository
 public interface CityRepository extends CrudRepository<City, Integer> {
 	List<City> findAllByOrderById();
-
+	List<City> findAll();
 	List<City> findAllByOrderByName();
 }
