@@ -15,7 +15,10 @@
 	<h1>Stations</h1>
 
 	<p>
-		Jump to the <a href="/cities">cities</a> page!
+		<a href="/"><button>Jump to the index page!</button></a>
+	</p>
+	<p>
+		 <a href="/cities"><button>Jump to the cities page!</button></a> 
 	</p>
 
 	<table>
@@ -35,16 +38,15 @@
 	<h2>Add station:</h2>
 	<form action="/stations/save">
 		<label>Station ID: <input name="id" required="required"></label>
-		<br /> 
-		<label>Station name: <input name="name" required="required"></label> 
-		<br /> 
-		<div> Select city name: 
-		<!--  <select> -->
+		<br /> <label>Station name: <input name="name"
+			required="required"></label> <br />
+		<div>
+			Select city name:
+			<!--  <select> -->
 			<select name="cityId">
-			<option th:each="cur: ${cities}" 
-					th:value="${cur.id}"
+				<option th:each="cur: ${cities}" th:value="${cur.id}"
 					th:text="${cur.name}">...</option>
-		</select>
+			</select>
 		</div>
 		<div>
 			<button>Create Station!</button>
