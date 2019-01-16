@@ -92,7 +92,7 @@ public class BikeCtrl {
 		return "bikes";
 	}
 
-	@GetMapping("/bikes/save")
+	@GetMapping("/bikes/create")
 	public String saveBike( //
 			@RequestParam(name = "id") Integer id, //
 			@RequestParam(name = "cityId") Integer cityId, //
