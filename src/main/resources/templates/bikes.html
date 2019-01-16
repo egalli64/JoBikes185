@@ -35,7 +35,7 @@
 		</tr>
 	</table>
 	<h2>Add bike:</h2>
-	<form action="/bikes/save">
+	<form action="/bikes/create">
 		<label>Bike Id: <input name="id" required="required"></label>
 		<br /> 
 		<div> Select city name: 
@@ -52,12 +52,7 @@
 					th:value="${cur.id}"
 					th:text="${cur.name}">...</option>
 		</select>
-		</div>
-		<br /> Select bike user: <select name="bikeUserId">
-			<option th:each="cur: ${bikeusers}" th:value="${cur.id}"
-				th:text="|${cur.firstName} ${cur.lastName}|">...</option>
-		</select>
-		<br /> 
+		</div> 
 		<div>
 		Bike type <select name="type">
 				<option value="STR" selected>STR</option>
@@ -101,7 +96,16 @@
 			<button>Edit bike!</button>
 		</div>
 	</form>
-
+   <h2>Delete Bike:</h2>
+	<form action="/bikes/delete">
+		<select name="id">
+			<option th:each="cur: ${bikes}" th:value="${cur.id}"
+				th:text="${cur.id}">...</option>
+		</select>
+		<div>
+			<button>Destroy bike!</button>
+		</div>
+	</form>
 	<h2>Order Bikes:</h2>
 	<form action="/bikes/order">
 		<input type="radio" name="by" value="Id" checked="checked" />Bike
