@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import jo.model.BikeRepository;
+import jo.model.BikeUserRepository;
 import jo.model.CityRepository;
 import jo.model.StationRepository;
 import jo.model.entities.Bike;
-
 
 @Controller
 public class BikeCtrl {
@@ -28,20 +28,23 @@ public class BikeCtrl {
 
 	@Autowired
 	BikeRepository repo;
-	
+
 	@Autowired
 	CityRepository repoCity;
 
 	@Autowired
 	StationRepository repoStation;
+	
+	@Autowired
+	BikeUserRepository repoBikeUser;
 
 	@GetMapping("/bikes")
 	public String showBikeOrderedbyId(Model model) {
 		logger.debug("Get all bikes");
 		model.addAttribute("bikes", repo.findAllByOrderById());
-		return orderBikes("Id",model);
+		return orderBikes("Id", model);
 	}
-	
+
 	@GetMapping("/bikes/order")
 	public String orderBikes( //
 			@RequestParam String by, //
@@ -53,10 +56,10 @@ public class BikeCtrl {
 		case "Id":
 			bikes = repo.findAllByOrderById();
 			break;
-		case "StationName":
+		case "CityId":
 			bikes = repo.findAllByOrderByCityId();
 			break;
-		case "StationId":
+		case "Type":
 			bikes = repo.findAllByOrderByType();
 			break;
 		default:
@@ -66,6 +69,7 @@ public class BikeCtrl {
 		model.addAttribute("bikes", bikes);
 		model.addAttribute("cities", repoCity.findAll());
 		model.addAttribute("stations", repoStation.findAll());
+		model.addAttribute("bikeusers", repoBikeUser.findAll());
 		return "bikes";
 	}
 
@@ -74,16 +78,17 @@ public class BikeCtrl {
 			@RequestParam(name = "id") Integer id, //
 			@RequestParam(name = "cityId") Integer cityId, //
 			@RequestParam(name = "stationId") Integer stationId, //
-			@RequestParam(name = "bikeUserId") Integer bikeUserId, //
+			@RequestParam(name = "bikeUserId") Integer bikeUserId,
 			@RequestParam(name = "type") String type, //
-			Model model) {
-		Bike bike = new Bike( id, cityId, stationId, bikeUserId, type);
+			Model model) {	
+		Bike bike = new Bike(id, cityId, stationId, bikeUserId, type);
 		logger.debug("Save bike " + bike);
 		repo.save(bike);
 
 		model.addAttribute("bikes", repo.findAll());
-		model.addAttribute("bikes", repoCity.findAll());
-		model.addAttribute("bikes", repoStation.findAll());
+		model.addAttribute("cities", repoCity.findAll());
+		model.addAttribute("stations", repoStation.findAll());
+		model.addAttribute("bikeusers", repoBikeUser.findAll());
 		return "bikes";
 	}
 

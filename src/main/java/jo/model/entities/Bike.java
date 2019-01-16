@@ -25,7 +25,7 @@ public class Bike {
 	@Column(name = "STATION_ID")
 	private Integer stationId;
 	
-	@Column(name = "BIKEUSER_ID")
+	@Column(name = "BU_ID")
 	private Integer bikeUserId;
 
 	@Column(name = "TYPE")
