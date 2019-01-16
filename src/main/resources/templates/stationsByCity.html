@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Stations in City</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/myStyles.css}">
+</head>
+<body>
+	<h1 th:if="${city.name.isEmpty()}">
+		No station with city id <span th:text="${city.id}">X</span>
+	</h1>
+
+	<div th:unless="${city.name.isEmpty()}">
+		<h1>
+			Stations in <span th:text="${city.name}">city</span>
+		</h1>
+
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>NAME</th>
+			</tr>
+			<tr th:each="station: ${stations}">
+				<td th:text="${station.id}">...</td>
+				<td th:text="${station.name}">...</td>
+			</tr>
+		</table>
+
+		<!-- >h2>Add station:</h2>
+	<form action="/stations/save">
+		<label>Station ID: <input name="id" required="required"></label>
+		<br /> 
+		<label>Station name: <input name="name" required="required"></label> 
+		<input type="hidden" name="cityId" th:value="${city.id}" />
+			<div>
+				<button>Save</button>
+			</div>
+		</form-->
+
+		<h2>Delete Station:</h2>
+		<form action="/stations/delete">
+			<select name="id">
+				<option th:each="cur: ${stations}" th:value="${cur.id}"
+					th:text="${cur.name}">...</option>
+			</select> <input type="hidden" name="cityId" id="cityId" th:value="${city.id}" />
+			<div>
+				<button>Delete</button>
+			</div>
+		</form>
+		<br>
+		<p>
+			Back to the <a href="/cities">cities</a> page!
+		</p>
+	</div>
+</body>
+</html>

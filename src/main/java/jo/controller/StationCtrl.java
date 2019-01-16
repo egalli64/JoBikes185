@@ -7,6 +7,7 @@
 package jo.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import jo.model.CityRepository;
 import jo.model.StationRepository;
+import jo.model.entities.City;
 import jo.model.entities.Station;
 
 @Controller
@@ -83,5 +85,24 @@ public class StationCtrl {
 		model.addAttribute("stations", repo.findAll());
 		return "stations";
 	}
+	
+	
+	@GetMapping("/stations/city")
+	public String stationsByCity( //
+			@RequestParam int id, //
+			Model model) {
+		Optional<City> city = repoCity.findById(id);
+		logger.debug("Stations by city " + id);
 
+		if (city.isPresent()) {
+			City cur = city.get();
+			List<Station> stations = repo.findByCityId(id);
+			model.addAttribute("stations", stations);
+			model.addAttribute("city", cur);
+		} else {
+			model.addAttribute("city", new City(id, ""));
+		}
+
+		return "stationsByCity";
+	}
 }

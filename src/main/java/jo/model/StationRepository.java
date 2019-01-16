@@ -10,10 +10,13 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+
 import jo.model.entities.Station;
 
 @Repository
 public interface StationRepository extends CrudRepository<Station, Integer> {
     List<Station> findAllByOrderById();
     List<Station> findAllByOrderByName();
+	
+	List<Station> findByCityId(int id);
 }
