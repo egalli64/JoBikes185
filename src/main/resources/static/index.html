@@ -7,52 +7,37 @@
 <link rel="stylesheet" type="text/css" href="css/myStyles.css">
 
 </head>
-<body>
-	<h1>Welcome to JoBikes!</h1>
+<body >
+<div id="head">
+	<h1>WELCOME TO</h1>
+	<h1 id="jobike">JOBike</h1>
 
+<div class="menublock">
 	<p>
-		<a href="/cities"><button>Jump to the cities page!</button></a>
+		<a href="/cities"><button class="menu button1">Cities</button></a>
 	</p>
 	<p>
-		<a href="/stations"><button>Jump to the stations page!</button></a>
+		<a href="/stations"><button class="menu button2">Stations</button></a>
 	</p>
 	<p>
-		<a href="/preferences"><button>Jump to the coders page!</button></a>
+		<a href="/preferences"><button class="menu button3">Coders</button></a>
 	</p>
 	<p>
-		<a href="/bikeusers"><button>Jump to the bike users page!</button></a>
+		<a href="/bikeusers"><button class="menu button4">Users</button></a>
 	</p>
 		<p>
-		<a href="/bikes"><button>Jump to the bikes page!</button></a>
+		<a href="/bikes"><button class="menu button5">Bikes</button></a>
 	</p>
+</div>
+<div id="sidemenu">
+<p class="sideline">utility1<p>
+<p class="sideline">utility2<p>
+<p class="sideline">utility3<p>
+<p class="sideline">utility4<p>
+<p class="sideline">utility5<p>
+</div>
+</div>
 
-	<fieldset>
-		<legend>Hello</legend>
-		<form name="frmLog" action="login" method="post"
-			onsubmit="return checkUser()">
-			<div>
-				<label for="userId">User:</label> <input name="user" id="userId">
-				<label for="pwdId">Password:</label> <input name="password"
-					id="pwdId" type="password">
-			</div>
-			<div>
-				<button>Check in</button>
-			</div>
-		</form>
-	</fieldset>
-	<fieldset>
-		<legend>GET is not a good idea here</legend>
-		<form action="login" method="get">
-			<div>
-				<label>User: <input name="user" /></label> <label>Password:
-					<input name="password" type="password">
-				</label>
-			</div>
-			<div>
-				<button>Check in</button>
-			</div>
-		</form>
-	</fieldset>
-	
+
 </body>
 </html>
