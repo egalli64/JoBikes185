@@ -56,6 +56,6 @@ public class Country {
 
 	@Override
 	public String toString() {
-		return String.format("id=%s, name=%s, region=%s", id, name, region.toString());
+		return "Country [id=" + id + ", name=" + name + ", region=" + region + "]";
 	}
 }
