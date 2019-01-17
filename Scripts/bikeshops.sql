@@ -11,7 +11,10 @@ INSERT INTO TYPES VALUES(2, 'mountain bike','null');
 INSERT INTO TYPES VALUES(3, 'BMX bike','null');
 INSERT INTO TYPES VALUES(4, 'tandem bike','null');
 INSERT INTO TYPES VALUES(5, 'electric bike','null');
---SELECT * FROM TYPES;
+INSERT INTO TYPES VALUES(6, 'velocipede','null');
+INSERT INTO TYPES VALUES(7, 'riscio','null');
+
+SELECT * FROM TYPES;
 --DROP TABLE TYPES;
 
 CREATE TABLE USERS (
@@ -24,7 +27,9 @@ CREATE TABLE USERS (
 );
 INSERT INTO USERS VALUES(1,'King', 'myshop', 'manager');
 INSERT INTO USERS VALUES(2,'Paperino', 'paperina', 'client');
---SELECT * FROM USERS;
+INSERT INTO USERS VALUES(3,'Selena', 'fotodipiedi', 'client');
+
+SELECT * FROM USERS;
 --DROP TABLE USERS;
 
 CREATE TABLE BICYCLES (
