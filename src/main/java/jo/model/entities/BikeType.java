@@ -9,53 +9,42 @@ import javax.persistence.Table;
 @Table(name = "TYPES")
 public class BikeType {
 	@Id
-	@Column(name = "TYPE_ID")
+	@Column(name = "ID")
 	private Integer id;
 
-	@Column(name = "TYPE_NAME")
-	private String typeName;
-
-	@Column(name = "TYPE_IMAGINE")
-	private String typeImg;
+	@Column(name = "TYPE")
+	private String type;
 
 	public BikeType() {
 
 	}
 
-	public BikeType(Integer id, String type, String typeImg) {
+	public BikeType(Integer id, String type) {
 		super();
 		this.id = id;
-		this.typeName = type;
-		this.typeImg = typeImg;
+		this.type = type;
 	}
 
 	public Integer getId() {
 		return id;
 	}
 
+	public String getType() {
+		return type;
+	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public String getTypeImg() {
-		return typeImg;
-	}
-
-	public void setTypeImg(String typeImg) {
-		this.typeImg = typeImg;
-	}
-
-	public String getTypeName() {
-		return typeName;
-	}
-
-	public void setTypeName(String typeName) {
-		this.typeName = typeName;
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	@Override
 	public String toString() {
-		return "BikeType [id=" + id + ", typeName=" + typeName + ", typeImg=" + typeImg + "]";
+
+		return "BikeType [id=" + id + ", type=" + type + "]";
 	}
- 
+
 }
