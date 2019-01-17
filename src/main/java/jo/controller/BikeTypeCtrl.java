@@ -41,7 +41,7 @@ public class BikeTypeCtrl {
 			types = repo.findAllByOrderById();
 			break;
 		case "types":
-			types = repo.findAllByOrderByTypes();
+			types = repo.findAllByOrderByTypesName();
 			break;
 		default:
 			types = repo.findAllByOrderById();
@@ -55,9 +55,10 @@ public class BikeTypeCtrl {
 	@GetMapping("/types/save")
 	public String saveType( //
 			@RequestParam(name = "id") Integer id, //
-			@RequestParam(name = "type") String type, //
+			@RequestParam(name = "typeName") String typeName, //
+			@RequestParam(name = "typeImg") String typeImg, //
 			Model model) {
-		BikeType bikeType = new BikeType(id, type);
+		BikeType bikeType = new BikeType(id, typeName, typeImg );
 		logger.debug("Save type " + bikeType);
 		repo.save(bikeType);
 

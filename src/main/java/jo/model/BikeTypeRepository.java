@@ -14,5 +14,5 @@ public interface BikeTypeRepository extends CrudRepository<BikeType, Integer> {
 
 	List<BikeType> findAllByOrderById();
 
-	List<BikeType> findAllByOrderByTypes();
+	List<BikeType> findAllByOrderByTypesName();
 }
