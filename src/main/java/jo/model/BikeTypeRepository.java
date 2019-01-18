@@ -10,9 +10,9 @@ import jo.model.entities.BikeType;
 public interface BikeTypeRepository extends CrudRepository<BikeType, Integer> {
 	List<BikeType> findAll();
 
-	List<BikeType> findAllById();
+	List<BikeType> findAllById(int id);
 
 	List<BikeType> findAllByOrderById();
 
-	List<BikeType> findAllByOrderByTypes();
+	List<BikeType> findAllByOrderByType();
 }

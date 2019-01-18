@@ -41,7 +41,7 @@ public class BikeTypeCtrl {
 			types = repo.findAllByOrderById();
 			break;
 		case "types":
-			types = repo.findAllByOrderByTypes();
+			types = repo.findAllByOrderByType();
 			break;
 		default:
 			types = repo.findAllByOrderById();
