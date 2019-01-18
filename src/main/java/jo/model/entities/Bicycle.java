@@ -13,32 +13,33 @@ import javax.persistence.Table;
 		private Integer id;
 		
 		@Column(name = "TARGET")
-		private String tar;
+		private String target;
 		
 		@Column(name = "TYPE_ID")
-		private Integer tId;
+		private Integer typeId;
 		
 		@Column(name = "BRAND")
-		private String bra;
+		private String brand;
 		
 		@Column(name = "MODEL")
-		private String mod;
+		private String model;
 		
 		@Column(name = "PRICE")
-		private Double pri;
+		private Double price;
 		
 		@Column(name = "STOCK")
-		private Integer sto;
+		private Integer stock;
 
-		public Bicycle(Integer id, String tar, Integer tId, String bra, String mod, Double pri, Integer sto) {
+		public Bicycle(Integer id, String target, Integer typeId, String brand, String model, Double price,
+				Integer stock) {
 			super();
 			this.id = id;
-			this.tar = tar;
-			this.tId = tId;
-			this.bra = bra;
-			this.mod = mod;
-			this.pri = pri;
-			this.sto = sto;
+			this.target = target;
+			this.typeId = typeId;
+			this.brand = brand;
+			this.model = model;
+			this.price = price;
+			this.stock = stock;
 		}
 
 		public Bicycle() {
@@ -53,57 +54,57 @@ import javax.persistence.Table;
 			this.id = id;
 		}
 
-		public String getTar() {
-			return tar;
+		public String getTarget() {
+			return target;
 		}
 
-		public void setTar(String tar) {
-			this.tar = tar;
+		public void setTarget(String target) {
+			this.target = target;
 		}
 
-		public Integer gettId() {
-			return tId;
+		public Integer getTypeId() {
+			return typeId;
 		}
 
-		public void settId(Integer tId) {
-			this.tId = tId;
+		public void setTypeId(Integer typeId) {
+			this.typeId = typeId;
 		}
 
-		public String getBra() {
-			return bra;
+		public String getBrand() {
+			return brand;
 		}
 
-		public void setBra(String bra) {
-			this.bra = bra;
+		public void setBrand(String brand) {
+			this.brand = brand;
 		}
 
-		public String getMod() {
-			return mod;
+		public String getModel() {
+			return model;
 		}
 
-		public void setMod(String mod) {
-			this.mod = mod;
+		public void setModel(String model) {
+			this.model = model;
 		}
 
-		public Double getPri() {
-			return pri;
+		public Double getPrice() {
+			return price;
 		}
 
-		public void setPri(Double pri) {
-			this.pri = pri;
+		public void setPrice(Double price) {
+			this.price = price;
 		}
 
-		public Integer getSto() {
-			return sto;
+		public Integer getStock() {
+			return stock;
 		}
 
-		public void setSto(Integer sto) {
-			this.sto = sto;
+		public void setStock(Integer stock) {
+			this.stock = stock;
 		}
 
 		@Override
 		public String toString() {
-			return "Bicycle [id=" + id + ", tar=" + tar + ", tId=" + tId + ", bra=" + bra + ", mod=" + mod + ", pri="
-					+ pri + ", sto=" + sto + "]";
+			return "Bicycle [id=" + id + ", target=" + target + ", typeId=" + typeId + ", brand=" + brand + ", model="
+					+ model + ", price=" + price + ", stock=" + stock + "]";
 		}
 }
