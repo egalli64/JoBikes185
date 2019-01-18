@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Welcome to JoBikes</title>
+<script src="js/myScripts.js"></script>
+<link rel="stylesheet" type="text/css" href="css/myStyles.css">
+</head>
+
+
+<body>
+
+<table>
+		<tr>
+			<th>ID</th>
+			<th>TARGET</th>
+			<th>TYPE_ID</th>
+			<th>BRAND</th>
+			<th>MODEL</th>
+			<th>PRICE</th>
+			<th>STOCK</th>
+		</tr>
+		<tr th:each="cur: ${bicycles}">
+			<td th:text="${cur.id}">...</td>
+			<td th:text="${cur.target}">...</td>
+			<td th:text="${cur.typeId}">...</td>
+			<td th:text="${cur.brand}">...</td>
+			<td th:text="${cur.model}">...</td>
+			<td th:text="${cur.price}">...</td>
+			<td th:text="${cur.stock}">...</td>
+		</tr>
+				
+</table>
+
+<form action="/bicyclesByTypeId">
+		<select name="id">
+			<option th:each="cur: ${bicycles}" th:value="${cur.typeId}"
+			>...</option>
+		</select>
+		<div>
+			<button>Destroy Station!</button>
+		</div>
+	</form>
+
+</body>
+
+</html>
