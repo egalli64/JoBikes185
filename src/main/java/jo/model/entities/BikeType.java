@@ -14,15 +14,19 @@ public class BikeType {
 
 	@Column(name = "TYPE")
 	private String type;
+	
+	@Column(name = "TYPE_IMAGINE")
+	private String pic;
 
 	public BikeType() {
 
 	}
 
-	public BikeType(Integer id, String type) {
+	public BikeType(Integer id, String type, String pic) {
 		super();
 		this.id = id;
 		this.type = type;
+		this.pic = pic;
 	}
 
 	public Integer getId() {
@@ -41,10 +45,16 @@ public class BikeType {
 		this.type = type;
 	}
 
-	@Override
-	public String toString() {
-
-		return "BikeType [id=" + id + ", type=" + type + "]";
+	public String getPic() {
+		return pic;
 	}
 
+	public void setPic(String pic) {
+		this.pic = pic;
+	}
+
+	@Override
+	public String toString() {
+		return "BikeType [id=" + id + ", type=" + type + ", pic=" + pic + "]";
+	}
 }
