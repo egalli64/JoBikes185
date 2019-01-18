@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>JoShop</title>
+<script src="js/myScripts.js"></script>
+<link rel="stylesheet" type="text/css" th:href="@{/css/myStyles2.css}">
+
+</head>
+
+<body>
+	<div id="head">
+		<h1 id="welcome">Welcome to </h1>
+		<h1 id="joshop">JoSHop</h1>
+				<form>
+				<div id="login">
+					<label>User: <input name="user" /></label> <label>Password:
+						<input name="password" type="password">
+					</label>
+					<div>
+					<button>login</button>
+				</div>
+				</div>
+				
+			</form>
+	<div class="menublock">
+		<a ><button class="menu button1">Home</button></a> <a
+			><button class="menu button2">OurBikes<div class="dropdownbox">
+		<ul th:each="cur: ${types}">
+			<li th:text="${cur.type}"></li>
+		</ul>
+	</div></button></a> <a
+			><button class="menu button3">Account</button></a> <a
+			><button class="menu button4">Kart</button></a>
+
+	</div>
+	
+	</div>
+
+	<div id="body">
+		<div id="typeselect">
+			<ul th:each="type: ${types}">
+				<li th:text="${type.type}" th:id="${type.type}" onclick="showPic()"></li>
+			</ul>
+		</div>
+		<div id="pic"  th:each="type: ${types}">
+			<div class="piccontainer" th:id="${type.type}" ><img th:href="|@{/images/}${type.pic}|" ></img></div>
+		</div>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
+		eiusmod tempor incididunt ut 
+		labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+		exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+		Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
+		dolore eu fugiat nulla pariatur.</p>
+	</div>
+	
+	<div id="footer"></div>
+	<script>
+	<script type="text/javascript">
+	
+	function showPic(){
+		var divs = document.getElementByClass("piccontainer").;
+		divs[i].addEventListener('click', function (event) {
+            this.getAttribute("id"));
+        });
+		}
+	</script>
+</body>
+</html>
