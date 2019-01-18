@@ -56,8 +56,9 @@ public class BikeTypeCtrl {
 	public String saveType( //
 			@RequestParam(name = "id") Integer id, //
 			@RequestParam(name = "type") String type, //
+			@RequestParam(name = "pic") String pic, //
 			Model model) {
-		BikeType bikeType = new BikeType(id, type);
+		BikeType bikeType = new BikeType(id, type, pic);
 		logger.debug("Save type " + bikeType);
 		repo.save(bikeType);
 

@@ -27,11 +27,11 @@ public class BicycleCtrl {
 		return orderBicycles("Id",model);
 	}
 	
-	@GetMapping("/bicycles")
-	public String showBicyclesOrderedbyTypeId(Model model) {
+	@GetMapping("/bicyclesByType")
+	public String showBicyclesFindByTypeId(Model model) {
 		logger.debug("Get all bicycles of one kind");
-		model.addAttribute("bicycles", repo.findAllByOrderByTypeId());
-		return orderBicycles("Id",model);
+		model.addAttribute("bicycles", repo.findByTypeId());
+		return "bicyclesByType";
 	}
 	
 	@GetMapping("/bicycles/order")
